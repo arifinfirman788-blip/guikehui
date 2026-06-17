@@ -1,0 +1,2279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>黄小西 × 贵客荟融合首页调频原型</title>
+  <style>
+    :root {
+      --brand: #0877d9;
+      --brand-deep: #0753b8;
+      --brand-soft: #e8f5ff;
+      --cyan: #18bde8;
+      --ink: #14223a;
+      --muted: #6f7f91;
+      --line: #dfeaf4;
+      --surface: #f4f8fc;
+      --card: #ffffff;
+      --gold: #ffd95a;
+      --orange: #ff7047;
+      --shadow: 0 18px 45px rgba(18, 65, 126, 0.12);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      color: var(--ink);
+      background: #e7eef7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: start center;
+      padding: 24px;
+    }
+
+    .phone {
+      width: min(750px, 100%);
+      height: min(1624px, calc(100dvh - 48px));
+      min-height: 760px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: 0 34px 90px rgba(20, 34, 58, 0.18);
+    }
+
+    .screen-scroll {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    .screen-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 330px;
+      padding: 42px 28px 28px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(6, 115, 214, 0.96), rgba(24, 189, 232, 0.84)),
+        url("assets/hxx-map-bg.jpg") center top / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 130px;
+      background: linear-gradient(180deg, rgba(244, 248, 252, 0), var(--surface) 78%);
+      pointer-events: none;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: var(--brand-deep);
+      background: rgba(255, 255, 255, 0.92);
+      font-size: 22px;
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(5, 63, 139, 0.14);
+    }
+
+    .brand-name {
+      min-width: 0;
+    }
+
+    .brand-name strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .brand-name span {
+      display: inline-flex;
+      margin-top: 7px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      color: #073f86;
+      background: rgba(255, 255, 255, 0.82);
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .mini-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      color: #0f2238;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      font-size: 24px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .search-wrap {
+      position: relative;
+      z-index: 2;
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 24px;
+      border-radius: 22px;
+      color: #5b6a78;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 35px rgba(6, 80, 160, 0.1);
+      font-size: 25px;
+      font-weight: 720;
+    }
+
+    .search-icon,
+    .nav-icon,
+    .line-icon {
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      color: currentColor;
+      vertical-align: -0.14em;
+    }
+
+    .ai-chip {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 22px;
+      color: #fff;
+      background: linear-gradient(135deg, #0b55d8, #5a57ff);
+      box-shadow: 0 16px 32px rgba(32, 78, 220, 0.24);
+      font-size: 22px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .quick-card {
+      position: relative;
+      z-index: 3;
+      margin: -74px 28px 0;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .quick-title strong,
+    .section-title strong {
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 930;
+    }
+
+    .quick-title span,
+    .section-title span {
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .service-grid {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .service-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .service {
+      min-height: 108px;
+      flex: 0 0 196px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 24px;
+      background: var(--svc-bg);
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .service i {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--svc);
+      font-style: normal;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .service span {
+      display: block;
+      line-height: 1.18;
+    }
+
+    .service small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .assistant-entry {
+      position: relative;
+      min-height: 136px;
+      display: grid;
+      grid-template-columns: 148px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      overflow: hidden;
+      padding: 16px 22px 16px 10px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(24, 189, 232, 0.18), transparent 34%),
+        linear-gradient(135deg, #eef9ff, #ffffff);
+      border: 1px solid rgba(8, 119, 217, 0.12);
+    }
+
+    .assistant-entry img {
+      width: 132px;
+      align-self: end;
+      justify-self: center;
+      transform: translateY(10px);
+    }
+
+    .assistant-entry small {
+      display: block;
+      color: var(--brand-deep);
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .assistant-entry strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 32px;
+      line-height: 1.15;
+      font-weight: 940;
+    }
+
+    .assistant-entry span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .assistant-entry .ask-arrow {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #fff;
+      background: var(--brand);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .utility-card {
+      min-height: 190px;
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border-radius: 26px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(7, 83, 184, 0.94), rgba(24, 189, 232, 0.72)),
+        var(--utility-img) center / cover;
+      box-shadow: 0 14px 34px rgba(18, 65, 126, 0.11);
+    }
+
+    .utility-card.light {
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(232, 245, 255, 0.78)),
+        var(--utility-img) center / cover;
+    }
+
+    .utility-card strong {
+      display: block;
+      font-size: 31px;
+      line-height: 1.08;
+      font-weight: 940;
+    }
+
+    .utility-card span {
+      display: block;
+      margin-top: 8px;
+      font-size: 20px;
+      line-height: 1.28;
+      font-weight: 730;
+      opacity: 0.9;
+    }
+
+    .utility-tags {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .utility-tags b {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 12px;
+      color: #083f76;
+      background: rgba(255, 255, 255, 0.82);
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .radio-tuner {
+      overflow: hidden;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(8, 119, 217, 0.1), rgba(24, 189, 232, 0.05)),
+        #fff;
+    }
+
+    .station-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border-bottom: 1px solid rgba(8, 119, 217, 0.1);
+    }
+
+    .frequency-readout small {
+      display: block;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .frequency-readout span {
+      display: block;
+      margin-top: 8px;
+      color: var(--brand-deep);
+      font-size: 48px;
+      line-height: 0.98;
+      font-weight: 950;
+    }
+
+    .frequency-readout strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 26px;
+      line-height: 1.16;
+      font-weight: 930;
+    }
+
+    .signal-meter {
+      width: 118px;
+      min-height: 82px;
+      display: grid;
+      align-content: center;
+      gap: 9px;
+      padding: 14px;
+      border-radius: 22px;
+      color: #fff;
+      background: linear-gradient(145deg, #0b55d8, #18bde8);
+      box-shadow: 0 14px 30px rgba(8, 119, 217, 0.18);
+    }
+
+    .signal-meter b {
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 930;
+    }
+
+    .signal-bars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: end;
+      gap: 5px;
+      height: 28px;
+    }
+
+    .signal-bars i {
+      display: block;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .signal-bars i:nth-child(1) { height: 9px; }
+    .signal-bars i:nth-child(2) { height: 14px; }
+    .signal-bars i:nth-child(3) { height: 19px; }
+    .signal-bars i:nth-child(4) { height: 24px; }
+    .signal-bars i:nth-child(5) { height: 28px; }
+
+    .dial-panel {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .dial-knob {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 38% 34%, #fff 0 18%, #dff3ff 19% 43%, #0877d9 44% 100%);
+      box-shadow:
+        inset 0 -14px 28px rgba(7, 83, 184, 0.26),
+        0 20px 40px rgba(8, 119, 217, 0.18);
+    }
+
+    .dial-knob::after {
+      content: "";
+      width: 48px;
+      height: 6px;
+      position: absolute;
+      top: 34px;
+      left: 72px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      transform: rotate(38deg);
+      transform-origin: left center;
+    }
+
+    .dial-knob span {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      font-size: 24px;
+      line-height: 1.05;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .tuning-area {
+      min-width: 0;
+    }
+
+    .tuning-scale {
+      position: relative;
+      height: 82px;
+      border-radius: 22px;
+      background:
+        repeating-linear-gradient(90deg, rgba(7, 83, 184, 0.16) 0 2px, transparent 2px 38px),
+        linear-gradient(180deg, #f8fcff, #eaf7ff);
+      overflow: hidden;
+      border: 1px solid rgba(8, 119, 217, 0.12);
+    }
+
+    .tuning-scale::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 41px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(8, 119, 217, 0.2);
+    }
+
+    .needle {
+      position: absolute;
+      left: var(--needle, 9%);
+      top: 10px;
+      bottom: 10px;
+      width: 4px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 7px rgba(255, 112, 71, 0.12);
+      transition: left 220ms ease;
+    }
+
+    .station-tabs {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .station-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .station-btn {
+      flex: 0 0 auto;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 999px;
+      color: #4d6377;
+      background: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(18, 65, 126, 0.07);
+    }
+
+    .station-btn.active {
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .station-live {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 0 22px 22px;
+    }
+
+    .live-chip {
+      min-height: 96px;
+      padding: 16px;
+      border-radius: 22px;
+      background: #f8fbff;
+      border: 1px solid rgba(8, 119, 217, 0.1);
+    }
+
+    .live-chip b {
+      display: block;
+      color: var(--brand-deep);
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 930;
+    }
+
+    .live-chip span {
+      display: block;
+      margin-top: 9px;
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.22;
+      font-weight: 860;
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 18px;
+    }
+
+    .lead-feed,
+    .side-feed-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .lead-feed {
+      min-height: 286px;
+      padding: 24px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(7, 83, 184, 0.94), rgba(24, 189, 232, 0.72)),
+        url("assets/travel/xijiang.jpg") center 44% / cover;
+    }
+
+    .source {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: var(--brand-deep);
+      background: rgba(255, 255, 255, 0.86);
+      font-size: 17px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .lead-feed h2 {
+      margin: 54px 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      font-weight: 950;
+    }
+
+    .lead-feed p {
+      width: 330px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .side-feed {
+      display: grid;
+      gap: 14px;
+    }
+
+    .side-feed-card {
+      min-height: 136px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .side-feed-card.outdoor {
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(19, 117, 93, 0.94), rgba(42, 174, 137, 0.76)),
+        url("assets/travel/fanjingshan.jpg") center 45% / cover;
+    }
+
+    .side-feed-card strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 24px;
+      line-height: 1.16;
+      font-weight: 920;
+    }
+
+    .side-feed-card span {
+      display: block;
+      margin-top: 6px;
+      color: inherit;
+      opacity: 0.78;
+      font-size: 17px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .waterfall-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .waterfall-column {
+      display: grid;
+      gap: 18px;
+    }
+
+    .waterfall-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .waterfall-card img {
+      width: 100%;
+      height: var(--wf-img-h, 220px);
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      background: var(--brand-soft);
+    }
+
+    .waterfall-body {
+      padding: 16px 18px 18px;
+    }
+
+    .waterfall-body b {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: var(--brand-deep);
+      background: var(--brand-soft);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .waterfall-body strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 920;
+    }
+
+    .waterfall-body span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 24px 28px 170px;
+    }
+
+    .ai-panel {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 18px;
+      margin-top: 2px;
+    }
+
+    .plan-card {
+      min-height: 220px;
+      padding: 24px;
+      border-radius: var(--radius);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(11, 85, 216, 0.94), rgba(0, 177, 214, 0.82)),
+        url("assets/travel/huangguoshu.jpg") center 45% / cover;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-card h2 {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.12;
+      font-weight: 950;
+    }
+
+    .plan-card p {
+      margin: 12px 0 20px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 21px;
+      line-height: 1.38;
+      font-weight: 650;
+    }
+
+    .plan-card button {
+      min-height: 48px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 16px;
+      color: var(--brand-deep);
+      background: #fff;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .assistant-card {
+      min-height: 220px;
+      position: relative;
+      padding: 22px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #fff6df, #ffffff);
+      box-shadow: var(--shadow);
+    }
+
+    .assistant-card strong {
+      display: block;
+      width: 172px;
+      font-size: 28px;
+      line-height: 1.16;
+      font-weight: 930;
+    }
+
+    .assistant-card span {
+      display: block;
+      width: 160px;
+      margin-top: 10px;
+      color: #7b6c3a;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.32;
+    }
+
+    .assistant-card img {
+      position: absolute;
+      right: -10px;
+      bottom: 10px;
+      width: 118px;
+      height: auto;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 34px 0 16px;
+    }
+
+    .home-notice {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .operator-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .operator-card {
+      min-height: 150px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .operator-card b {
+      display: block;
+      color: var(--brand-deep);
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .operator-card strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 920;
+    }
+
+    .operator-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.28;
+      font-weight: 700;
+    }
+
+    .notice-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      color: var(--brand-deep);
+      background: var(--brand-soft);
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .home-notice strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 920;
+    }
+
+    .home-notice span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .notice-link {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 14px;
+      color: #fff;
+      background: var(--brand);
+      font-size: 18px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .aigc-feed {
+      display: grid;
+      gap: 14px;
+    }
+
+    .aigc-card {
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .aigc-thumb {
+      width: 132px;
+      height: 96px;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: top center;
+      background: var(--brand-soft);
+    }
+
+    .aigc-copy b {
+      display: block;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--brand-deep);
+      background: var(--brand-soft);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .aigc-copy strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 920;
+    }
+
+    .aigc-copy span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .aigc-action {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 14px;
+      color: #fff;
+      background: var(--brand);
+      font-size: 17px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .focus-card {
+      min-height: 178px;
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .focus-card.blue {
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(7, 83, 184, 0.95), rgba(24, 189, 232, 0.78)),
+        url("assets/travel/qingyan.jpg") center 38% / cover;
+    }
+
+    .focus-card.gold {
+      background: linear-gradient(180deg, #fff6df, #fff);
+    }
+
+    .focus-card strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 930;
+    }
+
+    .focus-card span {
+      display: block;
+      margin-top: 10px;
+      color: inherit;
+      opacity: 0.82;
+      font-size: 19px;
+      line-height: 1.32;
+      font-weight: 700;
+    }
+
+    .focus-card img {
+      position: absolute;
+      right: -4px;
+      bottom: -2px;
+      width: 96px;
+      height: auto;
+    }
+
+    .rank-tabs {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 16px;
+      padding-bottom: 2px;
+    }
+
+    .rank-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rank-tabs button {
+      flex: 0 0 auto;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      color: #4d6377;
+      background: #fff;
+      font-size: 20px;
+      font-weight: 850;
+      box-shadow: 0 8px 20px rgba(18, 65, 126, 0.06);
+    }
+
+    .rank-tabs button.active {
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .ranking-card {
+      display: grid;
+      grid-template-columns: 206px 1fr;
+      gap: 20px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .ranking-card img {
+      width: 206px;
+      height: 166px;
+      object-fit: cover;
+      border-radius: 22px;
+      object-position: top center;
+    }
+
+    .rank-copy {
+      min-width: 0;
+      padding: 2px 0;
+    }
+
+    .rank-copy .label {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--brand-deep);
+      background: var(--brand-soft);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .rank-copy h3 {
+      margin: 12px 0 8px;
+      font-size: 30px;
+      line-height: 1.18;
+      font-weight: 930;
+    }
+
+    .rank-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .story-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .story-card img {
+      width: 100%;
+      height: 238px;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .story-card div {
+      padding: 18px;
+    }
+
+    .story-card strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .story-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      height: 130px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: end;
+      padding: 13px 20px 18px;
+      border-top: 1px solid rgba(208, 224, 237, 0.86);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 -16px 45px rgba(16, 50, 90, 0.11);
+    }
+
+    .nav-item {
+      display: grid;
+      gap: 7px;
+      justify-items: center;
+      color: #637486;
+      font-size: 19px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .nav-item .nav-symbol {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: currentColor;
+    }
+
+    .nav-item.active {
+      color: var(--brand);
+    }
+
+    .nav-item.active .nav-symbol {
+      background: var(--brand-soft);
+    }
+
+    .ai-nav {
+      transform: translateY(-18px);
+      color: var(--brand-deep);
+      font-size: 18px;
+    }
+
+    .ai-nav .ai-orb {
+      width: 82px;
+      height: 82px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 6px solid #fff;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0d7cea, #665cff);
+      box-shadow: 0 18px 32px rgba(24, 89, 222, 0.3);
+    }
+
+    .ai-nav .ai-orb img {
+      width: 58px;
+      height: auto;
+    }
+
+    button,
+    .nav-item {
+      cursor: default;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:active,
+    .service:active,
+    .nav-item:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 0;
+      }
+
+      .phone {
+        width: 100%;
+        border-radius: 0;
+        height: 100dvh;
+        min-height: 100dvh;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        min-height: 226px;
+        padding: 22px 14px 18px;
+      }
+
+      .topbar {
+        gap: 10px;
+      }
+
+      .brand-lockup {
+        gap: 8px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        font-size: 17px;
+      }
+
+      .brand-name strong {
+        font-size: 21px;
+      }
+
+      .brand-name span {
+        margin-top: 5px;
+        padding: 3px 8px;
+        font-size: 13px;
+        line-height: 1.15;
+      }
+
+      .mini-actions {
+        height: 42px;
+        padding: 0 13px;
+        gap: 9px;
+        font-size: 17px;
+      }
+
+      .search-wrap {
+        margin-top: 22px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .search {
+        min-height: 56px;
+        gap: 8px;
+        padding: 0 14px;
+        border-radius: 18px;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .ai-chip {
+        min-height: 56px;
+        padding: 0 13px;
+        border-radius: 18px;
+        font-size: 15px;
+      }
+
+      .quick-card {
+        margin: -34px 14px 0;
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .quick-title {
+        margin-bottom: 14px;
+      }
+
+      .quick-title strong,
+      .section-title strong {
+        font-size: 20px;
+      }
+
+      .quick-title span,
+      .section-title span {
+        font-size: 13px;
+      }
+
+      .service-grid {
+        gap: 10px;
+      }
+
+      .service {
+        min-height: 78px;
+        flex-basis: 164px;
+        gap: 8px;
+        padding: 10px;
+        border-radius: 18px;
+        font-size: 13px;
+      }
+
+      .service i {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        font-size: 18px;
+      }
+
+      .service small {
+        margin-top: 3px;
+        font-size: 10px;
+      }
+
+      .assistant-entry {
+        min-height: 104px;
+        grid-template-columns: 82px 1fr 34px;
+        gap: 8px;
+        padding: 10px 12px 10px 4px;
+        border-radius: 18px;
+      }
+
+      .assistant-entry img {
+        width: 82px;
+        transform: translateY(8px);
+      }
+
+      .assistant-entry small {
+        font-size: 12px;
+      }
+
+      .assistant-entry strong {
+        margin-top: 4px;
+        font-size: 18px;
+      }
+
+      .assistant-entry span {
+        margin-top: 3px;
+        font-size: 12px;
+      }
+
+      .assistant-entry .ask-arrow {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        font-size: 20px;
+      }
+
+      .utility-grid {
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .utility-card {
+        min-height: 136px;
+        padding: 14px;
+        border-radius: 18px;
+      }
+
+      .utility-card strong {
+        font-size: 21px;
+      }
+
+      .utility-card span {
+        margin-top: 5px;
+        font-size: 13px;
+      }
+
+      .utility-tags {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        gap: 5px;
+      }
+
+      .utility-tags b {
+        min-height: 26px;
+        padding: 0 8px;
+        border-radius: 9px;
+        font-size: 11px;
+      }
+
+      .radio-tuner {
+        border-radius: 18px;
+      }
+
+      .station-head {
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .frequency-readout small {
+        font-size: 12px;
+      }
+
+      .frequency-readout span {
+        margin-top: 5px;
+        font-size: 32px;
+      }
+
+      .frequency-readout strong {
+        margin-top: 4px;
+        font-size: 17px;
+      }
+
+      .signal-meter {
+        width: 78px;
+        min-height: 62px;
+        gap: 6px;
+        padding: 10px;
+        border-radius: 17px;
+      }
+
+      .signal-meter b {
+        font-size: 11px;
+      }
+
+      .signal-bars {
+        height: 21px;
+        gap: 3px;
+      }
+
+      .signal-bars i:nth-child(1) { height: 7px; }
+      .signal-bars i:nth-child(2) { height: 10px; }
+      .signal-bars i:nth-child(3) { height: 14px; }
+      .signal-bars i:nth-child(4) { height: 18px; }
+      .signal-bars i:nth-child(5) { height: 21px; }
+
+      .dial-panel {
+        grid-template-columns: 86px 1fr;
+        gap: 11px;
+        padding: 14px;
+      }
+
+      .dial-knob {
+        width: 84px;
+        height: 84px;
+      }
+
+      .dial-knob::after {
+        width: 26px;
+        height: 4px;
+        top: 18px;
+        left: 38px;
+      }
+
+      .dial-knob span {
+        font-size: 14px;
+      }
+
+      .tuning-scale {
+        height: 54px;
+        border-radius: 17px;
+        background:
+          repeating-linear-gradient(90deg, rgba(7, 83, 184, 0.16) 0 2px, transparent 2px 25px),
+          linear-gradient(180deg, #f8fcff, #eaf7ff);
+      }
+
+      .tuning-scale::before {
+        left: 12px;
+        right: 12px;
+        top: 27px;
+        height: 3px;
+      }
+
+      .needle {
+        top: 7px;
+        bottom: 7px;
+        width: 3px;
+        box-shadow: 0 0 0 5px rgba(255, 112, 71, 0.12);
+      }
+
+      .station-tabs {
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .station-btn {
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 13px;
+      }
+
+      .station-live {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 0 14px 14px;
+      }
+
+      .live-chip {
+        min-height: 62px;
+        padding: 11px;
+        border-radius: 17px;
+      }
+
+      .live-chip b {
+        font-size: 11px;
+      }
+
+      .live-chip span {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+
+      .content {
+        padding: 18px 14px 136px;
+      }
+
+      .ai-panel,
+      .feed-grid,
+      .focus-grid,
+      .content-row {
+        gap: 10px;
+      }
+
+      .feed-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lead-feed {
+        min-height: 190px;
+        padding: 15px;
+        border-radius: 22px;
+      }
+
+      .source {
+        min-height: 28px;
+        padding: 0 9px;
+        font-size: 12px;
+      }
+
+      .lead-feed h2 {
+        margin: 34px 0 7px;
+        font-size: 22px;
+      }
+
+      .lead-feed p {
+        width: 240px;
+        font-size: 13px;
+      }
+
+      .side-feed {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .side-feed-card {
+        min-height: 112px;
+        padding: 12px;
+        border-radius: 22px;
+      }
+
+      .side-feed-card strong {
+        margin-top: 8px;
+        font-size: 16px;
+      }
+
+      .side-feed-card span {
+        font-size: 12px;
+      }
+
+      .waterfall-grid {
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .waterfall-column {
+        gap: 10px;
+      }
+
+      .waterfall-card {
+        border-radius: 22px;
+      }
+
+      .waterfall-card img {
+        height: var(--wf-img-h-m, 132px);
+      }
+
+      .waterfall-body {
+        padding: 10px 11px 12px;
+      }
+
+      .waterfall-body b {
+        min-height: 24px;
+        padding: 0 8px;
+        font-size: 10px;
+      }
+
+      .waterfall-body strong {
+        margin-top: 7px;
+        font-size: 15px;
+      }
+
+      .waterfall-body span {
+        margin-top: 5px;
+        font-size: 11px;
+      }
+
+      .plan-card,
+      .assistant-card {
+        min-height: 158px;
+        padding: 15px;
+        border-radius: 22px;
+      }
+
+      .plan-card h2 {
+        font-size: 21px;
+      }
+
+      .plan-card p {
+        margin: 8px 0 12px;
+        font-size: 14px;
+      }
+
+      .plan-card button {
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 13px;
+        font-size: 14px;
+      }
+
+      .assistant-card strong {
+        width: 116px;
+        font-size: 20px;
+      }
+
+      .assistant-card span {
+        width: 118px;
+        font-size: 13px;
+      }
+
+      .assistant-card img {
+        width: 74px;
+      }
+
+      .section-title {
+        margin: 24px 0 12px;
+      }
+
+      .home-notice {
+        grid-template-columns: 42px 1fr auto;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 22px;
+      }
+
+      .notice-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        font-size: 18px;
+      }
+
+      .home-notice strong {
+        font-size: 15px;
+      }
+
+      .home-notice span {
+        font-size: 11px;
+      }
+
+      .notice-link {
+        min-height: 32px;
+        padding: 0 10px;
+        border-radius: 11px;
+        font-size: 12px;
+      }
+
+      .focus-card {
+        min-height: 128px;
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .focus-card strong {
+        font-size: 18px;
+      }
+
+      .focus-card span {
+        font-size: 13px;
+      }
+
+      .focus-card img {
+        width: 68px;
+      }
+
+      .operator-board {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .operator-card {
+        min-height: 96px;
+        padding: 13px;
+        border-radius: 22px;
+      }
+
+      .operator-card b {
+        font-size: 12px;
+      }
+
+      .operator-card strong {
+        margin-top: 7px;
+        font-size: 17px;
+      }
+
+      .operator-card span {
+        font-size: 12px;
+      }
+
+      .aigc-card {
+        grid-template-columns: 84px 1fr;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 22px;
+      }
+
+      .aigc-thumb {
+        width: 84px;
+        height: 74px;
+        border-radius: 16px;
+      }
+
+      .aigc-copy b {
+        font-size: 11px;
+      }
+
+      .aigc-copy strong {
+        font-size: 16px;
+      }
+
+      .aigc-copy span {
+        font-size: 12px;
+      }
+
+      .aigc-action {
+        grid-column: 2;
+        width: fit-content;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+
+      .rank-tabs button {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 14px;
+      }
+
+      .ranking-card {
+        grid-template-columns: 112px 1fr;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 22px;
+      }
+
+      .ranking-card img {
+        width: 112px;
+        height: 100px;
+        border-radius: 16px;
+      }
+
+      .rank-copy .label {
+        font-size: 12px;
+      }
+
+      .rank-copy h3 {
+        margin: 8px 0 5px;
+        font-size: 20px;
+      }
+
+      .rank-copy p {
+        font-size: 13px;
+      }
+
+      .story-card {
+        border-radius: 22px;
+      }
+
+      .story-card img {
+        height: 132px;
+      }
+
+      .story-card div {
+        padding: 12px;
+      }
+
+      .story-card strong {
+        font-size: 16px;
+      }
+
+      .story-card span {
+        font-size: 12px;
+      }
+
+      .bottom-nav {
+        height: 104px;
+        padding: 10px 10px 12px;
+      }
+
+      .nav-item {
+        gap: 5px;
+        font-size: 13px;
+      }
+
+      .nav-item .nav-symbol {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+      }
+
+      .ai-nav {
+        transform: translateY(-14px);
+        font-size: 13px;
+      }
+
+      .ai-nav .ai-orb {
+        width: 66px;
+        height: 66px;
+        border-width: 5px;
+      }
+
+      .ai-nav .ai-orb img {
+        width: 46px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="黄小西与贵客荟融合首页原型">
+    <div class="screen-scroll">
+    <section class="hero">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark">旅</div>
+          <div class="brand-name">
+            <strong>黄小西智游</strong>
+            <span>贵客荟服务保障</span>
+          </div>
+        </div>
+        <div class="mini-actions">••• ｜ 一 ｜ ◎</div>
+      </header>
+
+      <div class="search-wrap">
+        <div class="search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <span>搜景区、酒店、门票、玩法</span>
+        </div>
+        <button class="ai-chip" type="button">
+          <svg class="line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8L12 3Z" fill="currentColor"></path>
+            <path d="M19 14l.9 2.2L22 17l-2.1.8L19 20l-.9-2.2L16 17l2.1-.8L19 14Z" fill="currentColor"></path>
+          </svg>
+          帮我找
+        </button>
+      </div>
+
+    </section>
+
+    <section class="quick-card" aria-label="黄小西通用服务入口">
+      <div class="quick-title">
+        <strong>黄小西管家</strong>
+        <span>先问需求，再找玩法</span>
+      </div>
+      <div class="assistant-entry">
+        <img src="assets/hxx-ip.png" alt="黄小西管家" />
+        <div>
+          <small>我是你的贵州旅行管家</small>
+          <strong>有什么能帮到您？</strong>
+          <span>问路线、查榜单、看地图、找票券都可以。</span>
+        </div>
+        <div class="ask-arrow">›</div>
+      </div>
+      <div class="utility-grid">
+        <article class="utility-card" style="--utility-img:url('assets/travel/huangguoshu.jpg')">
+          <strong>贵州榜单</strong>
+          <span>民宿、美食、夜游、人气玩法</span>
+          <div class="utility-tags"><b>贵客榜</b><b>美食榜</b><b>必玩榜</b></div>
+        </article>
+        <article class="utility-card light" style="--utility-img:url('assets/travel/fanjingshan.jpg')">
+          <strong>游玩地图</strong>
+          <span>附近景点、路线、交通一图查看</span>
+          <div class="utility-tags"><b>附近</b><b>路线</b><b>导航</b></div>
+        </article>
+        <article class="utility-card light" style="--utility-img:url('assets/travel/qingyan.jpg')">
+          <strong>票券预订</strong>
+          <span>门票、游乐、活动和权益入口</span>
+          <div class="utility-tags"><b>门票</b><b>券包</b><b>活动</b></div>
+        </article>
+        <article class="utility-card" style="--utility-img:url('assets/travel/xijiang.jpg')">
+          <strong>活动日历</strong>
+          <span>节庆、赛事、展演和市集动态</span>
+          <div class="utility-tags"><b>节庆</b><b>赛事</b><b>展演</b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="section-title">
+        <strong>文旅电台</strong>
+        <span>看各板块此刻推荐 ></span>
+      </div>
+      <div class="radio-tuner" style="--needle:9%;">
+        <div class="station-head">
+          <div class="frequency-readout">
+            <small>正在收听</small>
+            <span id="frequencyValue">FM 88.6</span>
+            <strong id="stationName">贵客说</strong>
+          </div>
+          <div class="signal-meter" aria-hidden="true">
+            <b>LIVE</b>
+            <div class="signal-bars">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+        <div class="dial-panel">
+          <div class="dial-knob"><span>频道<br>调频</span></div>
+          <div class="tuning-area">
+            <div class="tuning-scale"><span class="needle"></span></div>
+            <div class="station-tabs" role="tablist" aria-label="文旅频道">
+              <button class="station-btn active" type="button" data-station="guike">88.6 贵客说</button>
+              <button class="station-btn" type="button" data-station="outdoor">91.2 户外</button>
+              <button class="station-btn" type="button" data-station="sport">95.7 体育</button>
+              <button class="station-btn" type="button" data-station="culture">99.3 慢游</button>
+            </div>
+          </div>
+        </div>
+        <div class="station-live">
+          <div class="live-chip">
+            <b>运营方</b>
+            <span id="stationOperator">贵客荟运营</span>
+          </div>
+          <div class="live-chip">
+            <b>频道内容</b>
+            <span id="stationContent">本地资讯、达人游记、权益内容</span>
+          </div>
+          <div class="live-chip">
+            <b>推荐重点</b>
+            <span id="stationAi">本地人视角和当季玩法</span>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">
+        <strong>此刻正在发生</strong>
+        <span id="editorTag">贵客荟精选 ></span>
+      </div>
+      <div class="feed-grid">
+        <article class="lead-feed">
+          <span class="source" id="leadSource">贵客荟运营 · 贵客说</span>
+          <h2 id="leadTitle">这条“桥梁+夜市”路线，本地人会这样玩</h2>
+          <p id="leadDesc">从本地内容进入玩法灵感，可继续问黄小西细化路线。</p>
+        </article>
+        <div class="side-feed">
+          <article class="side-feed-card outdoor">
+            <span class="source" id="sideSourceA">灵感推荐</span>
+            <strong id="sideTitleA">周末徒步避坑清单</strong>
+            <span id="sideDescA">装备、难度、集合点</span>
+          </article>
+          <article class="side-feed-card">
+            <span class="source" id="sideSourceB">相邻频道</span>
+            <strong id="sideTitleB">城市跑活动报名提醒</strong>
+            <span id="sideDescB">赛事资讯与周边玩法</span>
+          </article>
+        </div>
+      </div>
+      <div class="section-title">
+        <strong>频道瀑布流</strong>
+        <span id="waterfallMore">继续收听 ></span>
+      </div>
+      <div class="waterfall-grid" id="waterfallGrid" aria-label="当前频道瀑布流内容"></div>
+
+    </section>
+    </div>
+
+    <nav class="bottom-nav" aria-label="融合后底部导航">
+      <div class="nav-item active">
+        <span class="nav-symbol">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span>首页</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-symbol">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6.5 9 4l6 2.5 5-2.5v13.5L15 20l-6-2.5L4 20V6.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </span>
+        <span>行程</span>
+      </div>
+      <div class="nav-item ai-nav">
+        <span class="ai-orb">
+          <img src="assets/hxx-ip.png" alt="AI 管家" />
+        </span>
+        <span>AI管家</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-symbol">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M9 8a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <span>优选</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-symbol">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"></path>
+            <path d="M4.5 21a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <span>我的</span>
+      </div>
+    </nav>
+  </main>
+  <script>
+    const stationData = {
+      guike: {
+        frequency: "FM 88.6",
+        name: "贵客说",
+        operator: "贵客荟运营",
+        content: "本地资讯、达人游记、权益内容",
+        ai: "本地人视角和当季玩法",
+        needle: "9%",
+        tag: "贵客荟精选 >",
+        source: "贵客荟运营 · 贵客说",
+        lead: "这条“桥梁+夜市”路线，本地人会这样玩",
+        desc: "从本地内容进入玩法灵感，可继续问黄小西细化路线。",
+        sideA: ["户外推荐", "周末徒步避坑清单", "装备、难度、集合点"],
+        sideB: ["顺路看看", "城市跑活动报名提醒", "赛事资讯与周边玩法"],
+        accent: "贵客荟正在推荐",
+        waterfall: [
+          ["assets/travel/xijiang.jpg", "本地观察", "西江夜景什么时候去最舒服", "避开拥挤时段，顺路看一场苗寨灯火。", 258],
+          ["assets/travel/qingyan.jpg", "图文宣传", "青岩古镇半日慢逛", "城墙、石巷、糕粑稀饭，适合下午抵达。", 206],
+          ["assets/travel/huangguoshu.jpg", "贵客说", "黄果树周边怎么玩不绕路", "把瀑布、民宿和晚餐安排在同一条动线上。", 236],
+          ["assets/travel/fanjingshan.jpg", "达人笔记", "梵净山上山前要知道的事", "预约、天气、体力和返程时间一次讲清。", 286],
+          ["assets/travel/xijiang.jpg", "权益内容", "苗寨夜游权益提醒", "夜间演艺、接驳和餐饮券适合提前看。", 218],
+          ["assets/travel/qingyan.jpg", "周末灵感", "古镇拍照点位小清单", "适合亲子、朋友和轻量city walk。", 248]
+        ]
+      },
+      outdoor: {
+        frequency: "FM 91.2",
+        name: "户外贵州",
+        operator: "户外运营团队",
+        content: "徒步、露营、骑行、自驾",
+        ai: "安全提醒和线路亮点",
+        needle: "30%",
+        tag: "户外团队精选 >",
+        source: "户外运营团队 · 户外贵州",
+        lead: "周末轻徒步路线，按体力自动分级",
+        desc: "先看达人路线和避坑点，再让黄小西补齐交通与补给。",
+        sideA: ["贵客说", "桥梁夜市本地玩法", "夜游、餐饮、交通"],
+        sideB: ["运动贵州", "骑跑结合活动日历", "赛事资讯与周边玩法"],
+        accent: "户外团队正在推荐",
+        waterfall: [
+          ["assets/travel/fanjingshan.jpg", "路线推荐", "梵净山轻徒步天气提醒", "云雾、台阶和返程时间都要提前看。", 278],
+          ["assets/travel/huangguoshu.jpg", "户外观察", "瀑布步道适合什么人群", "老人、亲子、摄影用户的停留点不同。", 218],
+          ["assets/travel/xijiang.jpg", "装备提示", "夜间山地村寨怎么穿", "温差、鞋子、防滑和雨具是重点。", 232],
+          ["assets/travel/qingyan.jpg", "轻户外", "古镇周边骑行补给点", "短途骑行也需要看停车、补水和返程。", 260],
+          ["assets/travel/fanjingshan.jpg", "安全提醒", "高海拔路线别只看风景", "天气变化快，先确认开放和索道情况。", 210],
+          ["assets/travel/huangguoshu.jpg", "亲子户外", "瀑布周边低强度玩法", "少走回头路，保留休息和拍照时间。", 246]
+        ]
+      },
+      sport: {
+        frequency: "FM 95.7",
+        name: "运动贵州",
+        operator: "体育运营团队",
+        content: "赛事、场馆、活动、运动路线",
+        ai: "赛事动态和周边玩法",
+        needle: "52%",
+        tag: "体育团队精选 >",
+        source: "体育运营团队 · 运动贵州",
+        lead: "城市跑活动报名提醒，顺路玩两处新地标",
+        desc: "赛事资讯在首页种草，报名和权益承接到优选或活动页。",
+        sideA: ["户外贵州", "骑行补给站地图", "补给、安全、集合点"],
+        sideB: ["文化慢游", "赛后夜游小剧场", "演艺、夜市、交通"],
+        accent: "体育团队正在推荐",
+        waterfall: [
+          ["assets/travel/xijiang.jpg", "赛事周边", "赛后夜游怎么安排", "跑完不急着走，夜景和餐饮可以串起来。", 236],
+          ["assets/travel/qingyan.jpg", "活动提醒", "古镇定向赛看点", "适合亲子队、朋友组和轻运动用户。", 264],
+          ["assets/travel/fanjingshan.jpg", "运动贵州", "山地越野报名前看天气", "关注补给、海拔、强制装备和关门时间。", 282],
+          ["assets/travel/huangguoshu.jpg", "观赛灵感", "陪跑亲友可以去哪等", "把等待时间变成周边小游玩。", 206],
+          ["assets/travel/qingyan.jpg", "城市运动", "周末骑跑结合路线", "短距离活动更适合和市集内容联动。", 226],
+          ["assets/travel/xijiang.jpg", "达人分享", "夜跑之后的贵州小吃", "运动后的轻食和夜市推荐。", 250]
+        ]
+      },
+      culture: {
+        frequency: "FM 99.3",
+        name: "文化慢游",
+        operator: "文旅内容团队",
+        content: "非遗、展演、博物馆、慢旅行",
+        ai: "文化故事和慢游灵感",
+        needle: "73%",
+        tag: "文旅内容精选 >",
+        source: "文旅内容团队 · 文化慢游",
+        lead: "一个下午读懂贵州非遗，路线从展馆开始",
+        desc: "内容以故事和知识为主，黄小西负责变成可走的路线。",
+        sideA: ["贵客说", "本地人私藏小馆", "口味、环境、周边"],
+        sideB: ["研学推荐", "非遗讲解词", "亲子、研学、慢游"],
+        accent: "文旅内容团队正在推荐",
+        waterfall: [
+          ["assets/travel/qingyan.jpg", "文化慢游", "青岩古镇的石巷故事", "不赶景点，慢慢看建筑、城墙和老店。", 268],
+          ["assets/travel/xijiang.jpg", "非遗现场", "苗寨夜晚不只是看灯", "歌舞、银饰、长桌宴背后都有故事。", 226],
+          ["assets/travel/fanjingshan.jpg", "研学推荐", "梵净山自然课堂", "适合亲子了解生态、山地和保护区。", 250],
+          ["assets/travel/huangguoshu.jpg", "图文宣传", "瀑布声音里的贵州夏天", "用一篇内容讲清避暑、拍照和停留时间。", 292],
+          ["assets/travel/qingyan.jpg", "慢游笔记", "古镇小吃怎么吃不踩空", "从糕粑稀饭到卤猪脚，按动线安排。", 214],
+          ["assets/travel/xijiang.jpg", "节庆内容", "苗年活动提前看", "活动时间、观看位置和周边交通建议。", 242]
+        ]
+      },
+    };
+
+    const bindText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    const renderWaterfall = (items) => {
+      const grid = document.getElementById("waterfallGrid");
+      if (!grid) return;
+      const columns = [document.createElement("div"), document.createElement("div")];
+      columns.forEach((column) => column.className = "waterfall-column");
+      items.forEach((item, index) => {
+        const [image, label, title, desc, height] = item;
+        const card = document.createElement("article");
+        card.className = "waterfall-card";
+        card.style.setProperty("--wf-img-h", `${height}px`);
+        card.style.setProperty("--wf-img-h-m", `${Math.max(118, Math.round(height * 0.58))}px`);
+        card.innerHTML = `
+          <img src="${image}" alt="${title}" />
+          <div class="waterfall-body">
+            <b>${label}</b>
+            <strong>${title}</strong>
+            <span>${desc}</span>
+          </div>
+        `;
+        columns[index % 2].appendChild(card);
+      });
+      grid.replaceChildren(...columns);
+    };
+
+    const renderStation = (data) => {
+      document.querySelector(".radio-tuner").style.setProperty("--needle", data.needle);
+      bindText("frequencyValue", data.frequency);
+      bindText("stationName", data.name);
+      bindText("stationOperator", data.operator);
+      bindText("stationContent", data.content);
+      bindText("stationAi", data.ai);
+      bindText("editorTag", data.tag);
+      bindText("leadSource", data.source);
+      bindText("leadTitle", data.lead);
+      bindText("leadDesc", data.desc);
+      bindText("sideSourceA", data.sideA[0]);
+      bindText("sideTitleA", data.sideA[1]);
+      bindText("sideDescA", data.sideA[2]);
+      bindText("sideSourceB", data.sideB[0]);
+      bindText("sideTitleB", data.sideB[1]);
+      bindText("sideDescB", data.sideB[2]);
+      renderWaterfall(data.waterfall || []);
+    };
+
+    renderWaterfall(stationData.guike.waterfall);
+
+    document.querySelectorAll(".station-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const data = stationData[button.dataset.station];
+        if (!data) return;
+        document.querySelectorAll(".station-btn").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        renderStation(data);
+      });
+    });
+  </script>
+</body>
+</html>

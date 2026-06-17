@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>黄小西 × 贵客荟一期融合落地页</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6a75;
+      --line: #d8e1e7;
+      --paper: #f7fafb;
+      --panel: #ffffff;
+      --accent: #0c7c66;
+      --accent-deep: #075748;
+      --accent-soft: #dff3ec;
+      --warn: #b2551b;
+      --blue: #285e8f;
+      --shadow: 0 18px 45px rgba(23, 32, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(223, 243, 236, 0.72), rgba(247, 250, 251, 0) 420px),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 250, 251, 0.88);
+      border-bottom: 1px solid rgba(216, 225, 231, 0.86);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 760;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--accent-deep);
+      font-size: 15px;
+      flex: 0 0 auto;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 560;
+      margin-top: 1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #354350;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .nav a:hover {
+      background: #eaf2f0;
+    }
+
+    .hero {
+      min-height: calc(100dvh - 64px);
+      padding: 70px 0 40px;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      padding: 7px 10px;
+      border: 1px solid #b8d9cf;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .tag::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 22px 0 18px;
+      font-size: clamp(38px, 5.7vw, 72px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 0;
+      color: #3e4e5a;
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 10px;
+      border: 1px solid var(--accent-deep);
+      font-size: 15px;
+      font-weight: 720;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--accent-deep);
+      box-shadow: 0 12px 28px rgba(7, 87, 72, 0.18);
+    }
+
+    .button.secondary {
+      color: var(--accent-deep);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-board {
+      position: relative;
+      min-height: 520px;
+      padding: 20px;
+      border: 1px solid rgba(184, 217, 207, 0.92);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 4px 4px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .flow-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .flow-card {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid #e0e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .flow-card strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .flow-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      font-weight: 820;
+    }
+
+    .owner {
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: #edf7f4;
+      font-size: 12px;
+      font-weight: 760;
+      white-space: nowrap;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 3.8vw, 44px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .principle {
+      min-height: 168px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+    }
+
+    .principle b {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent-deep);
+      font-size: 19px;
+    }
+
+    .principle p {
+      margin: 0;
+      color: #4c5b66;
+      font-size: 14px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: 0 10px 28px rgba(23, 32, 42, 0.04);
+    }
+
+    .panel-pad {
+      padding: 22px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .kpi {
+      padding: 16px;
+      border-radius: 12px;
+      background: #f1f7f5;
+    }
+
+    .kpi strong {
+      display: block;
+      color: var(--accent-deep);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .kpi span {
+      display: block;
+      margin-top: 8px;
+      color: #53616c;
+      font-size: 13px;
+    }
+
+    .workstreams {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workstream {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .workstream h3 {
+      margin: 0;
+      color: var(--accent-deep);
+      font-size: 18px;
+    }
+
+    .workstream ul,
+    .role-card ul,
+    .risk-list,
+    .asset-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #485763;
+      font-size: 14px;
+    }
+
+    .workstream li + li,
+    .role-card li + li,
+    .risk-list li + li,
+    .asset-list li + li {
+      margin-top: 7px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .product-preview {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .phone-shot {
+      width: min(100%, 360px);
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 34px;
+      background: #111827;
+      box-shadow: 0 28px 68px rgba(23, 32, 42, 0.18);
+    }
+
+    .phone-shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 430 / 932;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 25px;
+      background: #fff;
+    }
+
+    .live-frame {
+      height: 620px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #eef4f6;
+    }
+
+    .live-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #f3f4f6;
+    }
+
+    .preview-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 20px;
+    }
+
+    .feature-checks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .feature-check {
+      padding: 14px;
+      border-radius: 12px;
+      background: #f1f7f5;
+      color: #344550;
+      font-size: 14px;
+    }
+
+    .feature-check b {
+      display: block;
+      color: var(--accent-deep);
+      margin-bottom: 5px;
+    }
+
+    .gkh-showcase {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .gkh-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(23, 32, 42, 0.05);
+    }
+
+    .gkh-shot {
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid #e4ebef;
+      background: #edf5f8;
+    }
+
+    .gkh-shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 828 / 1561;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .capability-map {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .capability-row {
+      padding: 15px;
+      border-radius: 12px;
+      background: #f5f9f8;
+      color: #41505b;
+      font-size: 14px;
+    }
+
+    .capability-row b {
+      display: block;
+      color: var(--accent-deep);
+      margin-bottom: 4px;
+    }
+
+    .fusion-home {
+      padding: 26px;
+      border: 1px solid rgba(184, 217, 207, 0.92);
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f4faf8);
+      box-shadow: 0 16px 42px rgba(23, 32, 42, 0.06);
+    }
+
+    .fusion-topline {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .fusion-topline p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .fusion-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .fusion-strategy {
+      display: grid;
+      gap: 14px;
+    }
+
+    .fusion-rule {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .fusion-rule b {
+      display: block;
+      color: var(--accent-deep);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .fusion-rule p {
+      margin: 0;
+      color: #475763;
+      font-size: 14px;
+    }
+
+    .fusion-ia {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .ia-item {
+      min-height: 126px;
+      padding: 15px;
+      border-radius: 14px;
+      background: #eef7f4;
+      color: #344550;
+      font-size: 13px;
+    }
+
+    .ia-item b {
+      display: block;
+      color: var(--accent-deep);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .channel-table {
+      display: grid;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .channel-row {
+      display: grid;
+      grid-template-columns: 88px 98px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #edf2f4;
+      color: #465661;
+      font-size: 13px;
+    }
+
+    .channel-row:last-child {
+      border-bottom: 0;
+    }
+
+    .channel-row b {
+      color: var(--accent-deep);
+    }
+
+    .channel-row span {
+      color: #6b7882;
+      font-weight: 680;
+    }
+
+    .iteration-plan {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .iteration-plan h3 {
+      margin: 0;
+      color: var(--accent-deep);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .iteration-plan p {
+      margin: 0;
+      color: #4b5a65;
+      font-size: 14px;
+    }
+
+    .iteration-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .iteration-card {
+      min-height: 128px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f1f7f5;
+      color: #43525d;
+      font-size: 13px;
+    }
+
+    .iteration-card b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--accent-deep);
+      font-size: 15px;
+    }
+
+    .channel-policy {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .policy-item {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #dfe9ed;
+      color: #465661;
+      background: #fbfdfd;
+      font-size: 12px;
+    }
+
+    .policy-item b {
+      display: block;
+      color: var(--accent-deep);
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .fusion-boundary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .boundary-item {
+      padding: 14px;
+      border-radius: 12px;
+      background: #f8fbfb;
+      border: 1px solid #e1eaee;
+      color: #41505b;
+      font-size: 13px;
+    }
+
+    .boundary-item b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent-deep);
+      font-size: 15px;
+    }
+
+    .fusion-preview {
+      display: grid;
+      gap: 14px;
+    }
+
+    .screen-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+
+    .screen-pair figure {
+      min-width: 0;
+      margin: 0;
+    }
+
+    .screen-frame {
+      padding: 8px;
+      border-radius: 26px;
+      background: #102033;
+      box-shadow: 0 20px 46px rgba(23, 32, 42, 0.18);
+    }
+
+    .screen-frame img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 390 / 844;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 19px;
+      background: #fff;
+    }
+
+    .screen-caption {
+      margin-top: 8px;
+      color: #5f6d77;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .prototype-note {
+      padding: 16px;
+      border-radius: 14px;
+      background: #eaf5f1;
+      color: #40505b;
+      font-size: 14px;
+    }
+
+    .prototype-note b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent-deep);
+      font-size: 16px;
+    }
+
+    .report-part {
+      display: grid;
+      gap: 24px;
+    }
+
+    .part-heading {
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .part-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid #b8d9cf;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .part-heading h2 {
+      margin-bottom: 10px;
+    }
+
+    .part-heading p {
+      max-width: 840px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .capability-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .capability-card {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.42fr) minmax(0, 0.58fr);
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(23, 32, 42, 0.05);
+    }
+
+    .capability-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent-deep);
+      font-size: 22px;
+    }
+
+    .capability-card ul,
+    .problem-card ul,
+    .fusion-list,
+    .landing-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #485763;
+      font-size: 14px;
+    }
+
+    .capability-card li + li,
+    .problem-card li + li,
+    .fusion-list li + li,
+    .landing-list li + li {
+      margin-top: 7px;
+    }
+
+    .mini-shot {
+      overflow: hidden;
+      border: 1px solid #e3ebef;
+      border-radius: 16px;
+      background: #eef5f7;
+    }
+
+    .mini-shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 390 / 844;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .mini-shot.gkh-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 8px;
+      background: #fff;
+    }
+
+    .mini-shot.gkh-mini img {
+      border-radius: 10px;
+      aspect-ratio: 828 / 1561;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .problem-card {
+      min-height: 152px;
+      padding: 16px;
+      border: 1px solid #e1eaee;
+      border-radius: 14px;
+      background: #fbfdfd;
+    }
+
+    .problem-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--warn);
+      font-size: 16px;
+    }
+
+    .problem-card p {
+      margin: 0;
+      color: #4b5a65;
+      font-size: 13px;
+    }
+
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .purpose-card {
+      padding: 16px;
+      border-radius: 14px;
+      background: #eef7f4;
+      color: #41505b;
+      font-size: 13px;
+    }
+
+    .purpose-card b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--accent-deep);
+      font-size: 16px;
+    }
+
+    .fusion-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .landing-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .landing-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .landing-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent-deep);
+      font-size: 20px;
+    }
+
+    .mini-timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f5f9f8;
+      color: #475763;
+      font-size: 14px;
+    }
+
+    .mini-step b {
+      color: var(--accent-deep);
+    }
+
+    .phase {
+      position: relative;
+      min-height: 238px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .phase::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: var(--accent);
+    }
+
+    .phase time {
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .phase h3 {
+      margin: 12px 0 10px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .phase p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .phase .done {
+      display: block;
+      margin-top: 14px;
+      color: #2f424f;
+      font-size: 14px;
+      font-weight: 720;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .role-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .role-card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .role-card .badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .asset-zone {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .placeholder {
+      min-height: 150px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1.5px dashed #aebfc8;
+      border-radius: 14px;
+      background: #fbfdfd;
+    }
+
+    .placeholder b {
+      display: block;
+      font-size: 16px;
+    }
+
+    .placeholder span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .placeholder a {
+      width: fit-content;
+      margin-top: 18px;
+      padding: 7px 10px;
+      border-radius: 9px;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .decision-band {
+      margin: 12px 0 0;
+      padding: 26px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-deep), #0b6d5c);
+      box-shadow: 0 18px 40px rgba(7, 87, 72, 0.18);
+    }
+
+    .decision-band h2 {
+      color: #fff;
+      font-size: clamp(26px, 4vw, 42px);
+    }
+
+    .decision-band p {
+      max-width: 880px;
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 17px;
+    }
+
+    .footer {
+      padding: 36px 0 52px;
+      color: #64727d;
+      font-size: 13px;
+    }
+
+    .print-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 44px;
+      }
+
+      .hero-grid,
+      .split,
+      .asset-zone,
+      .product-preview,
+      .gkh-showcase,
+      .fusion-layout,
+      .capability-columns,
+      .capability-card,
+      .fusion-summary,
+      .landing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-board {
+        min-height: auto;
+      }
+
+      .principles,
+      .timeline,
+      .roles,
+      .fusion-boundary,
+      .channel-policy,
+      .problem-grid,
+      .purpose-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell,
+      .topbar-inner {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .topbar-inner {
+        min-height: 58px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .flow-card {
+        grid-template-columns: 38px 1fr;
+      }
+
+      .owner {
+        grid-column: 2;
+        width: fit-content;
+      }
+
+      .principles,
+      .timeline,
+      .roles,
+      .placeholder-grid,
+      .kpi-grid,
+      .feature-checks,
+      .fusion-ia,
+      .fusion-boundary,
+      .screen-pair,
+      .iteration-grid,
+      .channel-policy,
+      .problem-grid,
+      .purpose-grid,
+      .part-heading,
+      .mini-step {
+        grid-template-columns: 1fr;
+      }
+
+      .fusion-home {
+        padding: 18px;
+      }
+
+      .fusion-topline {
+        display: block;
+      }
+
+      .channel-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .workstream {
+        grid-template-columns: 1fr;
+      }
+
+      .gkh-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gkh-shot img {
+        max-height: 520px;
+      }
+    }
+
+    @media print {
+      .topbar,
+      .hero-actions {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      section,
+      .hero {
+        padding: 28px 0;
+        min-height: auto;
+      }
+
+      .panel,
+      .principle,
+      .phase,
+      .role-card,
+      .placeholder,
+      .fusion-home,
+      .fusion-rule,
+      .screen-frame {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark">HX</span>
+        <span>黄小西 × 贵客荟<small>一期融合落地汇报</small></span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#part-current">现状问题</a>
+        <a href="#part-fusion">融合思路</a>
+        <a href="#part-landing">落地路径</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="page-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div>
+            <span class="tag">三部分汇报结构</span>
+            <h1 id="hero-title">用黄小西承接用户，用贵客荟完成交易。</h1>
+            <p class="lead">先讲双方已有能力和当前问题，再讲融合后的产品思路与目标，最后讲一期怎么落地、各方怎么协同。</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#part-fusion">查看融合思路</a>
+              <a class="button secondary" href="#part-landing">查看落地路径</a>
+            </div>
+          </div>
+
+          <aside class="hero-board" aria-label="一期闭环路径">
+            <div class="flow-title">
+              <span>用户路径</span>
+              <span>责任承接</span>
+            </div>
+            <div class="flow-stack">
+              <div class="flow-card">
+                <div class="number">01</div>
+                <div><strong>统一登录</strong><span>黄小西账号绑定贵客荟会员身份</span></div>
+                <em class="owner">双方技术</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">02</div>
+                <div><strong>智能咨询</strong><span>识别出游意图、同行人、时间与预算</span></div>
+                <em class="owner">黄小西</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">03</div>
+                <div><strong>商品推荐</strong><span>AI 输出可售酒店、门票、套餐卡片</span></div>
+                <em class="owner">联合</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">04</div>
+                <div><strong>下单支付</strong><span>贵客荟承接库存、价格、订单与支付</span></div>
+                <em class="owner">贵客荟</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">05</div>
+                <div><strong>订单服务</strong><span>黄小西查订单、AI 客服、人工转接</span></div>
+                <em class="owner">联合</em>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="part-current" class="report-part" aria-labelledby="current-title">
+        <div class="part-heading">
+          <span class="part-index">第一部分</span>
+          <div>
+            <h2 id="current-title">现有能力与主要问题。</h2>
+            <p>黄小西有智能交互和前端服务基础，贵客荟有交易、会员、资源和运营基础，但目前两套能力还没有形成统一入口、统一用户和统一数据闭环。</p>
+          </div>
+        </div>
+
+        <div class="capability-columns">
+          <article class="capability-card">
+            <div class="mini-shot">
+              <img src="qa/huangxiaoxi-current-home.png" alt="黄小西当前首页能力截图" />
+            </div>
+            <div>
+              <h3>黄小西现有能力</h3>
+              <ul>
+                <li>已有 AI 问答、帮我找、行程推荐、内容种草和底部导航基础。</li>
+                <li>具备文旅智能体、景区酒店问答、路线规划和数据加工能力。</li>
+                <li>适合作为集团统一 C 端服务入口和智能服务中枢。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="capability-card">
+            <div class="mini-shot gkh-mini" aria-label="贵客荟页面能力截图">
+              <img src="assets/guikehui-home.png" alt="贵客荟首页能力截图" />
+              <img src="assets/guikehui-content.png" alt="贵客荟内容运营截图" />
+              <img src="assets/guikehui-profile.png" alt="贵客荟会员订单截图" />
+            </div>
+            <div>
+              <h3>贵客荟现有能力</h3>
+              <ul>
+                <li>沉淀了门票、酒店、线路、优惠券、订单、支付和会员权益。</li>
+                <li>具备资源上架、分销、核销、订单履约和运营活动能力。</li>
+                <li>可作为集团文旅产业互联平台的交易底座和业务底盘。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="problem-grid" aria-label="当前主要问题">
+          <article class="problem-card"><b>入口分散</b><p>多个小程序和页面独立运行，用户不知道从哪里进入，集团流量难沉淀。</p></article>
+          <article class="problem-card"><b>用户割裂</b><p>账号、会员、积分、订单没有完全贯通，无法形成统一用户资产。</p></article>
+          <article class="problem-card"><b>数据孤岛</b><p>交互数据、交易数据、会员数据分散，难以反哺选品、营销和经营决策。</p></article>
+          <article class="problem-card"><b>AI 脱链</b><p>黄小西能问能推荐，但与贵客荟商品、库存、支付和履约链路结合不深。</p></article>
+          <article class="problem-card"><b>运营分散</b><p>各板块各做内容和活动，缺少统一频道机制和内容质量规则。</p></article>
+        </div>
+      </section>
+
+      <section id="part-fusion" class="report-part" aria-labelledby="fusion-title">
+        <div class="part-heading">
+          <span class="part-index">第二部分</span>
+          <div>
+            <h2 id="fusion-title">融合后的思路、目的与内容。</h2>
+            <p>总体思路是“黄小西做统一入口和智能中枢，贵客荟做交易底座和运营供给”，通过四个统一和四层融合，把智能交互、内容发现、会员权益、商品交易和数据运营串成闭环。</p>
+          </div>
+        </div>
+
+        <div class="purpose-grid" aria-label="融合目标">
+          <div class="purpose-card"><b>服务升级</b>从用户自己找产品，变成黄小西主动识别需求、推荐玩法和服务提醒。</div>
+          <div class="purpose-card"><b>交易转化</b>从内容和问答跳转到可售商品，形成问即能订、订即能服的链路。</div>
+          <div class="purpose-card"><b>用户沉淀</b>打通会员、积分、券包、订单和行为数据，从流量运营转向用户经营。</div>
+          <div class="purpose-card"><b>运营提效</b>用 AI 辅助客服、内容、营销和数据分析，让各运营板块有统一阵地。</div>
+        </div>
+
+        <div class="fusion-summary">
+          <div class="fusion-home">
+            <div class="fusion-topline">
+              <div>
+                <span class="tag">融合后首页方向</span>
+                <h2>首页做发现和服务入口，交易交给优选承接。</h2>
+              </div>
+              <p>顶部放问答引导、贵州榜单、游玩地图、票券预订、活动日历等通用服务；下方用“文旅电台”承接多运营板块的内容推荐。</p>
+            </div>
+            <div class="fusion-ia">
+              <div class="ia-item"><b>统一入口</b>黄小西承接用户进入、智能问答、路线细化和服务转接。</div>
+              <div class="ia-item"><b>交易底座</b>贵客荟承接商品、库存、价格、订单、支付、核销和售后。</div>
+              <div class="ia-item"><b>会员权益</b>会员等级、积分、券包、活动权益逐步互通。</div>
+              <div class="ia-item"><b>数据闭环</b>交互、点击、下单、支付、客服、复购形成统一看板。</div>
+            </div>
+            <div class="fusion-rule">
+              <b>文旅电台的边界</b>
+              <p>电台只负责频道化内容发现，不重复榜单、不重复行程、不抢优选交易。后续运营板块变多时，首页只露出 3 到 5 个精选频道，其余进入频道池和频道广场。</p>
+            </div>
+          </div>
+
+          <div class="fusion-preview">
+            <div class="screen-pair">
+              <figure>
+                <div class="screen-frame">
+                  <img src="qa/fusion-home-no-slogan-390.png" alt="融合后首页首屏原型，展示通用服务入口" />
+                </div>
+                <figcaption class="screen-caption">首屏：通用服务和黄小西管家</figcaption>
+              </figure>
+              <figure>
+                <div class="screen-frame">
+                  <img src="qa/fusion-home-waterfall-390.png" alt="融合后首页文旅电台原型，展示频道内容和瀑布流" />
+                </div>
+                <figcaption class="screen-caption">下滑：文旅电台和频道瀑布流</figcaption>
+              </figure>
+            </div>
+            <div class="prototype-note">
+              <b>融合哪些东西</b>
+              <ul class="fusion-list">
+                <li>品牌与入口：对外以黄小西作为统一服务入口。</li>
+                <li>商品与交易：贵客荟能力作为优选和交易组件接入。</li>
+                <li>内容与频道：贵客说、户外、体育、文化等运营板块进入频道池。</li>
+                <li>会员与数据：统一身份、会员权益、订单和行为数据。</li>
+              </ul>
+              <div class="preview-actions">
+                <a class="button primary" href="fusion-home-prototype.html" target="_blank" rel="noreferrer">打开融合首页原型</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="part-landing" class="report-part" aria-labelledby="landing-title">
+        <div class="part-heading">
+          <span class="part-index">第三部分</span>
+          <div>
+            <h2 id="landing-title">一期如何落地。</h2>
+            <p>一期不做大而全，先完成底座打通和两个试点场景，证明“黄小西能带来转化，贵客荟能承接交易，集团能沉淀用户资产”。</p>
+          </div>
+        </div>
+
+        <div class="principles">
+          <article class="principle"><b>统一品牌</b><p>对外统一黄小西智游入口，贵客荟作为交易和会员能力内置露出。</p></article>
+          <article class="principle"><b>统一用户</b><p>手机号、OpenID、会员 ID 建立映射，先跑通一号登录和订单身份一致。</p></article>
+          <article class="principle"><b>统一交易</b><p>商品展示、库存价格校验、下单支付、订单查询、退款核销闭环跑通。</p></article>
+          <article class="principle"><b>统一数据</b><p>建立咨询、点击、下单、支付、客服、复购漏斗，作为领导汇报看板。</p></article>
+        </div>
+
+        <div class="landing-grid">
+          <div class="landing-card">
+            <h3>一期工作拆解</h3>
+            <ul class="landing-list">
+              <li>机制建立：成立联合专项组，确认总负责人、产品、技术、运营、客服和数据责任人。</li>
+              <li>原型确认：确定首页、优选、订单、会员、客服和频道内容的页面边界。</li>
+              <li>接口联调：打通商品、库存、价格、订单、支付、会员、券包和核销接口。</li>
+              <li>试点运营：先选核心景区和自营酒店，补齐图片、规则、价格、库存和客服口径。</li>
+              <li>数据验收：每周看账号绑定、推荐点击、下单支付、客服解决和复购数据。</li>
+            </ul>
+          </div>
+
+          <div class="landing-card">
+            <h3>12 周推进节奏</h3>
+            <div class="mini-timeline">
+              <div class="mini-step"><b>1-2周</b><span>定范围、定机制、定试点资源和接口清单。</span></div>
+              <div class="mini-step"><b>3-4周</b><span>完成原型、账号会员方案、商品接入方案和埋点方案。</span></div>
+              <div class="mini-step"><b>5-8周</b><span>完成开发联调，上线商品卡、下单、支付、订单查询和智能客服。</span></div>
+              <div class="mini-step"><b>9-12周</b><span>灰度试运行，复盘问题，形成二期扩量和全域运营方案。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roles">
+          <article class="role-card">
+            <span class="badge">黄小西</span>
+            <h3>牵头体验、AI 和数据</h3>
+            <ul>
+              <li>输出用户路径、首页原型、问答规则、推荐逻辑和数据看板。</li>
+              <li>完成智能问答、商品卡承接、订单查询、客服分流和频道体验。</li>
+            </ul>
+          </article>
+          <article class="role-card">
+            <span class="badge">贵客荟</span>
+            <h3>牵头交易、会员和履约</h3>
+            <ul>
+              <li>提供商品池、会员规则、库存价格、订单支付、退款核销和售后能力。</li>
+              <li>负责试点商品运营、资源维护、客服承接和履约协调。</li>
+            </ul>
+          </article>
+          <article class="role-card">
+            <span class="badge">集团与子公司</span>
+            <h3>牵头资源和协同</h3>
+            <ul>
+              <li>拍板统一入口、数据权限、跨公司责任和问题升级机制。</li>
+              <li>各子公司安排专职对接人，负责资源上架、活动执行、订单履约和素材维护。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="asset-zone">
+          <div class="placeholder-grid">
+            <div class="placeholder"><div><b>试点资源素材</b><span>景区、酒店、线路、餐饮、出行和商品图片及卖点。</span></div><a href="#待补充-试点资源链接">待补充链接</a></div>
+            <div class="placeholder"><div><b>交易与会员资料</b><span>商品池、会员权益、券包、订单、支付、退款和核销规则。</span></div><a href="#待补充-交易资料链接">待补充链接</a></div>
+            <div class="placeholder"><div><b>接口与数据看板</b><span>账号映射、接口文档、埋点方案和经营看板。</span></div><a href="#待补充-项目资料链接">待补充链接</a></div>
+            <div class="placeholder"><div><b>运营频道资料</b><span>频道负责人、更新频率、内容模板和频道准入规则。</span></div><a href="#待补充-频道资料链接">待补充链接</a></div>
+          </div>
+          <div class="decision-band">
+            <h2>汇报结论：先做闭环，再做扩量。</h2>
+            <p>一期先打通入口、用户、交易和数据，围绕酒店与景区形成可体验、可转化、可复盘的样板。样板跑通后，再把能力扩展到更多子公司、更多频道和更多文旅业态。</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="page-shell">黄小西 × 贵客荟一期融合落地页｜版本：2026-06-16｜可直接打印或转存 PDF</div>
+  </footer>
+</body>
+</html>
