@@ -19,6 +19,18 @@
       --orange: #ff7047;
       --shadow: 0 18px 45px rgba(18, 65, 126, 0.12);
       --radius: 28px;
+      --station: #0877d9;
+      --station-deep: #0753b8;
+      --station-soft: #e8f5ff;
+      --station-tint: #f5fbff;
+      --station-hot: #ff7047;
+      --station-rgb: 8, 119, 217;
+      --station-deep-rgb: 7, 83, 184;
+      --lead-img: url("assets/travel/xijiang.jpg");
+      --side-a-img: url("assets/travel/fanjingshan.jpg");
+      --side-b-img: url("assets/travel/qingyan.jpg");
+      --station-pattern: linear-gradient(135deg, rgba(8, 119, 217, 0.12), rgba(24, 189, 232, 0.06));
+      --station-card-note: "本地";
     }
 
     * {
@@ -50,6 +62,23 @@
       border-radius: 28px;
       background: var(--surface);
       box-shadow: 0 34px 90px rgba(20, 34, 58, 0.18);
+      transition: background 240ms ease;
+    }
+
+    .phone.station-guike {
+      background: linear-gradient(180deg, #f4f9ff 0%, #eef6ff 100%);
+    }
+
+    .phone.station-outdoor {
+      background: linear-gradient(180deg, #f5fbf7 0%, #edf8f1 100%);
+    }
+
+    .phone.station-sport {
+      background: linear-gradient(180deg, #fff7f6 0%, #fff1ef 100%);
+    }
+
+    .phone.station-culture {
+      background: linear-gradient(180deg, #fbf8ff 0%, #f5f0fb 100%);
     }
 
     .screen-scroll {
@@ -416,8 +445,10 @@
       overflow: hidden;
       border-radius: 24px;
       background:
-        linear-gradient(135deg, rgba(8, 119, 217, 0.1), rgba(24, 189, 232, 0.05)),
+        var(--station-pattern),
         #fff;
+      box-shadow: 0 18px 42px rgba(var(--station-rgb), 0.13);
+      transition: background 220ms ease, box-shadow 220ms ease;
     }
 
     .station-head {
@@ -426,7 +457,7 @@
       gap: 18px;
       align-items: center;
       padding: 22px;
-      border-bottom: 1px solid rgba(8, 119, 217, 0.1);
+      border-bottom: 1px solid rgba(var(--station-rgb), 0.12);
     }
 
     .frequency-readout small {
@@ -439,7 +470,7 @@
     .frequency-readout span {
       display: block;
       margin-top: 8px;
-      color: var(--brand-deep);
+      color: var(--station-deep);
       font-size: 48px;
       line-height: 0.98;
       font-weight: 950;
@@ -462,8 +493,9 @@
       padding: 14px;
       border-radius: 22px;
       color: #fff;
-      background: linear-gradient(145deg, #0b55d8, #18bde8);
-      box-shadow: 0 14px 30px rgba(8, 119, 217, 0.18);
+      background: linear-gradient(145deg, var(--station-deep), var(--station));
+      box-shadow: 0 14px 30px rgba(var(--station-rgb), 0.2);
+      transition: background 220ms ease, box-shadow 220ms ease;
     }
 
     .signal-meter b {
@@ -508,10 +540,11 @@
       place-items: center;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 38% 34%, #fff 0 18%, #dff3ff 19% 43%, #0877d9 44% 100%);
+        radial-gradient(circle at 38% 34%, #fff 0 18%, var(--station-soft) 19% 43%, var(--station) 44% 100%);
       box-shadow:
-        inset 0 -14px 28px rgba(7, 83, 184, 0.26),
-        0 20px 40px rgba(8, 119, 217, 0.18);
+        inset 0 -14px 28px rgba(var(--station-deep-rgb), 0.26),
+        0 20px 40px rgba(var(--station-rgb), 0.2);
+      transition: background 220ms ease, box-shadow 220ms ease;
     }
 
     .dial-knob::after {
@@ -546,10 +579,11 @@
       height: 82px;
       border-radius: 22px;
       background:
-        repeating-linear-gradient(90deg, rgba(7, 83, 184, 0.16) 0 2px, transparent 2px 38px),
-        linear-gradient(180deg, #f8fcff, #eaf7ff);
+        repeating-linear-gradient(90deg, rgba(var(--station-deep-rgb), 0.16) 0 2px, transparent 2px 38px),
+        linear-gradient(180deg, #fff, var(--station-soft));
       overflow: hidden;
-      border: 1px solid rgba(8, 119, 217, 0.12);
+      border: 1px solid rgba(var(--station-rgb), 0.14);
+      transition: background 220ms ease, border-color 220ms ease;
     }
 
     .tuning-scale::before {
@@ -560,7 +594,7 @@
       top: 41px;
       height: 4px;
       border-radius: 999px;
-      background: rgba(8, 119, 217, 0.2);
+      background: rgba(var(--station-rgb), 0.22);
     }
 
     .needle {
@@ -570,9 +604,9 @@
       bottom: 10px;
       width: 4px;
       border-radius: 999px;
-      background: var(--orange);
-      box-shadow: 0 0 0 7px rgba(255, 112, 71, 0.12);
-      transition: left 220ms ease;
+      background: var(--station-hot);
+      box-shadow: 0 0 0 7px color-mix(in srgb, var(--station-hot) 18%, transparent);
+      transition: left 220ms ease, background 220ms ease, box-shadow 220ms ease;
     }
 
     .station-tabs {
@@ -603,7 +637,8 @@
 
     .station-btn.active {
       color: #fff;
-      background: var(--brand);
+      background: var(--station);
+      box-shadow: 0 10px 24px rgba(var(--station-rgb), 0.22);
     }
 
     .station-live {
@@ -617,13 +652,14 @@
       min-height: 96px;
       padding: 16px;
       border-radius: 22px;
-      background: #f8fbff;
-      border: 1px solid rgba(8, 119, 217, 0.1);
+      background: var(--station-tint);
+      border: 1px solid rgba(var(--station-rgb), 0.12);
+      transition: background 220ms ease, border-color 220ms ease;
     }
 
     .live-chip b {
       display: block;
-      color: var(--brand-deep);
+      color: var(--station-deep);
       font-size: 16px;
       line-height: 1.1;
       font-weight: 930;
@@ -657,8 +693,10 @@
       padding: 24px;
       color: #fff;
       background:
-        linear-gradient(135deg, rgba(7, 83, 184, 0.94), rgba(24, 189, 232, 0.72)),
-        url("assets/travel/xijiang.jpg") center 44% / cover;
+        linear-gradient(135deg, rgba(var(--station-deep-rgb), 0.95), rgba(var(--station-rgb), 0.68)),
+        var(--lead-img) center 44% / cover;
+      box-shadow: 0 22px 48px rgba(var(--station-rgb), 0.22);
+      transition: background 220ms ease, box-shadow 220ms ease;
     }
 
     .source {
@@ -668,7 +706,7 @@
       min-height: 34px;
       padding: 0 12px;
       border-radius: 999px;
-      color: var(--brand-deep);
+      color: var(--station-deep);
       background: rgba(255, 255, 255, 0.86);
       font-size: 17px;
       font-weight: 900;
@@ -700,13 +738,21 @@
       min-height: 136px;
       padding: 18px;
       background: #fff;
+      border: 1px solid rgba(var(--station-rgb), 0.08);
+      transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
     }
 
-    .side-feed-card.outdoor {
+    .side-feed-card.primary-side {
       color: #fff;
       background:
-        linear-gradient(135deg, rgba(19, 117, 93, 0.94), rgba(42, 174, 137, 0.76)),
-        url("assets/travel/fanjingshan.jpg") center 45% / cover;
+        linear-gradient(135deg, rgba(var(--station-deep-rgb), 0.9), rgba(var(--station-rgb), 0.64)),
+        var(--side-a-img) center 45% / cover;
+    }
+
+    .side-feed-card.secondary-side {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(var(--station-rgb), 0.08)),
+        var(--side-b-img) center 50% / cover;
     }
 
     .side-feed-card strong {
@@ -744,7 +790,9 @@
       overflow: hidden;
       border-radius: var(--radius);
       background: #fff;
-      box-shadow: var(--shadow);
+      box-shadow: 0 15px 34px rgba(var(--station-rgb), 0.12);
+      border: 1px solid rgba(var(--station-rgb), 0.07);
+      transition: box-shadow 220ms ease, border-color 220ms ease;
     }
 
     .waterfall-card img {
@@ -753,7 +801,7 @@
       display: block;
       object-fit: cover;
       object-position: center;
-      background: var(--brand-soft);
+      background: var(--station-soft);
     }
 
     .waterfall-body {
@@ -766,8 +814,8 @@
       align-items: center;
       padding: 0 10px;
       border-radius: 999px;
-      color: var(--brand-deep);
-      background: var(--brand-soft);
+      color: var(--station-deep);
+      background: var(--station-soft);
       font-size: 15px;
       line-height: 1;
       font-weight: 900;
@@ -1529,6 +1577,10 @@
         padding: 14px;
       }
 
+      .tuning-area {
+        display: contents;
+      }
+
       .dial-knob {
         width: 84px;
         height: 84px;
@@ -1546,11 +1598,12 @@
       }
 
       .tuning-scale {
+        grid-column: 2;
         height: 54px;
         border-radius: 17px;
         background:
-          repeating-linear-gradient(90deg, rgba(7, 83, 184, 0.16) 0 2px, transparent 2px 25px),
-          linear-gradient(180deg, #f8fcff, #eaf7ff);
+          repeating-linear-gradient(90deg, rgba(var(--station-deep-rgb), 0.16) 0 2px, transparent 2px 25px),
+          linear-gradient(180deg, #fff, var(--station-soft));
       }
 
       .tuning-scale::before {
@@ -1564,15 +1617,19 @@
         top: 7px;
         bottom: 7px;
         width: 3px;
-        box-shadow: 0 0 0 5px rgba(255, 112, 71, 0.12);
+        box-shadow: 0 0 0 5px color-mix(in srgb, var(--station-hot) 18%, transparent);
       }
 
       .station-tabs {
+        grid-column: 1 / -1;
+        width: 100%;
         gap: 8px;
-        margin-top: 10px;
+        margin-top: 2px;
+        padding: 2px 0 4px;
       }
 
       .station-btn {
+        flex-basis: 112px;
         min-height: 38px;
         padding: 0 12px;
         font-size: 13px;
@@ -2053,12 +2110,12 @@
           <p id="leadDesc">从本地内容进入玩法灵感，可继续问黄小西细化路线。</p>
         </article>
         <div class="side-feed">
-          <article class="side-feed-card outdoor">
+          <article class="side-feed-card primary-side">
             <span class="source" id="sideSourceA">灵感推荐</span>
             <strong id="sideTitleA">周末徒步避坑清单</strong>
             <span id="sideDescA">装备、难度、集合点</span>
           </article>
-          <article class="side-feed-card">
+          <article class="side-feed-card secondary-side">
             <span class="source" id="sideSourceB">相邻频道</span>
             <strong id="sideTitleB">城市跑活动报名提醒</strong>
             <span id="sideDescB">赛事资讯与周边玩法</span>
@@ -2127,12 +2184,26 @@
         content: "本地资讯、达人游记、权益内容",
         ai: "本地人视角和当季玩法",
         needle: "9%",
+        themeClass: "station-guike",
+        theme: {
+          "station": "#0877d9",
+          "station-deep": "#0753b8",
+          "station-soft": "#e8f5ff",
+          "station-tint": "#f5fbff",
+          "station-hot": "#ff7047",
+          "station-rgb": "8, 119, 217",
+          "station-deep-rgb": "7, 83, 184",
+          "station-pattern": "linear-gradient(135deg, rgba(8, 119, 217, 0.12), rgba(24, 189, 232, 0.06))",
+          "lead-img": "url('assets/travel/xijiang.jpg')",
+          "side-a-img": "url('assets/travel/huangguoshu.jpg')",
+          "side-b-img": "url('assets/travel/qingyan.jpg')"
+        },
         tag: "贵客荟精选 >",
         source: "贵客荟运营 · 贵客说",
         lead: "这条“桥梁+夜市”路线，本地人会这样玩",
         desc: "从本地内容进入玩法灵感，可继续问黄小西细化路线。",
-        sideA: ["户外推荐", "周末徒步避坑清单", "装备、难度、集合点"],
-        sideB: ["顺路看看", "城市跑活动报名提醒", "赛事资讯与周边玩法"],
+        sideA: ["本地热议", "黄果树周边怎么玩不绕路", "民宿、晚餐、返程"],
+        sideB: ["轻量灵感", "青岩古镇半日慢逛", "石巷、小吃、拍照点"],
         accent: "贵客荟正在推荐",
         waterfall: [
           ["assets/travel/xijiang.jpg", "本地观察", "西江夜景什么时候去最舒服", "避开拥挤时段，顺路看一场苗寨灯火。", 258],
@@ -2150,12 +2221,26 @@
         content: "徒步、露营、骑行、自驾",
         ai: "安全提醒和线路亮点",
         needle: "30%",
+        themeClass: "station-outdoor",
+        theme: {
+          "station": "#13885f",
+          "station-deep": "#0b6044",
+          "station-soft": "#e5f7ef",
+          "station-tint": "#f3fbf7",
+          "station-hot": "#f4b43f",
+          "station-rgb": "19, 136, 95",
+          "station-deep-rgb": "11, 96, 68",
+          "station-pattern": "linear-gradient(135deg, rgba(19, 136, 95, 0.13), rgba(244, 180, 63, 0.08))",
+          "lead-img": "url('assets/travel/fanjingshan.jpg')",
+          "side-a-img": "url('assets/travel/huangguoshu.jpg')",
+          "side-b-img": "url('assets/travel/qingyan.jpg')"
+        },
         tag: "户外团队精选 >",
         source: "户外运营团队 · 户外贵州",
         lead: "周末轻徒步路线，按体力自动分级",
         desc: "先看达人路线和避坑点，再让黄小西补齐交通与补给。",
-        sideA: ["贵客说", "桥梁夜市本地玩法", "夜游、餐饮、交通"],
-        sideB: ["运动贵州", "骑跑结合活动日历", "赛事资讯与周边玩法"],
+        sideA: ["安全提示", "瀑布步道适合什么人群", "亲子、老人、摄影"],
+        sideB: ["补给建议", "古镇周边骑行补给点", "停车、补水、返程"],
         accent: "户外团队正在推荐",
         waterfall: [
           ["assets/travel/fanjingshan.jpg", "路线推荐", "梵净山轻徒步天气提醒", "云雾、台阶和返程时间都要提前看。", 278],
@@ -2173,12 +2258,26 @@
         content: "赛事、场馆、活动、运动路线",
         ai: "赛事动态和周边玩法",
         needle: "52%",
+        themeClass: "station-sport",
+        theme: {
+          "station": "#df3b38",
+          "station-deep": "#a8202b",
+          "station-soft": "#fff0ef",
+          "station-tint": "#fff8f6",
+          "station-hot": "#ff8a2e",
+          "station-rgb": "223, 59, 56",
+          "station-deep-rgb": "168, 32, 43",
+          "station-pattern": "linear-gradient(135deg, rgba(223, 59, 56, 0.12), rgba(255, 138, 46, 0.08))",
+          "lead-img": "url('assets/travel/qingyan.jpg')",
+          "side-a-img": "url('assets/travel/fanjingshan.jpg')",
+          "side-b-img": "url('assets/travel/xijiang.jpg')"
+        },
         tag: "体育团队精选 >",
         source: "体育运营团队 · 运动贵州",
         lead: "城市跑活动报名提醒，顺路玩两处新地标",
         desc: "赛事资讯在首页种草，报名和权益承接到优选或活动页。",
-        sideA: ["户外贵州", "骑行补给站地图", "补给、安全、集合点"],
-        sideB: ["文化慢游", "赛后夜游小剧场", "演艺、夜市、交通"],
+        sideA: ["报名提醒", "山地越野报名前看天气", "补给、装备、关门时间"],
+        sideB: ["赛后推荐", "夜跑之后的贵州小吃", "夜市、交通、轻食"],
         accent: "体育团队正在推荐",
         waterfall: [
           ["assets/travel/xijiang.jpg", "赛事周边", "赛后夜游怎么安排", "跑完不急着走，夜景和餐饮可以串起来。", 236],
@@ -2196,12 +2295,26 @@
         content: "非遗、展演、博物馆、慢旅行",
         ai: "文化故事和慢游灵感",
         needle: "73%",
+        themeClass: "station-culture",
+        theme: {
+          "station": "#7b4cc4",
+          "station-deep": "#56308f",
+          "station-soft": "#f2ecff",
+          "station-tint": "#fbf8ff",
+          "station-hot": "#b47a34",
+          "station-rgb": "123, 76, 196",
+          "station-deep-rgb": "86, 48, 143",
+          "station-pattern": "linear-gradient(135deg, rgba(123, 76, 196, 0.12), rgba(180, 122, 52, 0.08))",
+          "lead-img": "url('assets/travel/qingyan.jpg')",
+          "side-a-img": "url('assets/travel/xijiang.jpg')",
+          "side-b-img": "url('assets/travel/fanjingshan.jpg')"
+        },
         tag: "文旅内容精选 >",
         source: "文旅内容团队 · 文化慢游",
         lead: "一个下午读懂贵州非遗，路线从展馆开始",
         desc: "内容以故事和知识为主，黄小西负责变成可走的路线。",
-        sideA: ["贵客说", "本地人私藏小馆", "口味、环境、周边"],
-        sideB: ["研学推荐", "非遗讲解词", "亲子、研学、慢游"],
+        sideA: ["非遗现场", "苗寨夜晚不只是看灯", "歌舞、银饰、长桌宴"],
+        sideB: ["研学推荐", "梵净山自然课堂", "亲子、生态、慢游"],
         accent: "文旅内容团队正在推荐",
         waterfall: [
           ["assets/travel/qingyan.jpg", "文化慢游", "青岩古镇的石巷故事", "不赶景点，慢慢看建筑、城墙和老店。", 268],
@@ -2217,6 +2330,16 @@
     const bindText = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
+    };
+
+    const applyStationTheme = (data) => {
+      const phone = document.querySelector(".phone");
+      if (!phone) return;
+      phone.classList.remove("station-guike", "station-outdoor", "station-sport", "station-culture");
+      if (data.themeClass) phone.classList.add(data.themeClass);
+      Object.entries(data.theme || {}).forEach(([key, value]) => {
+        phone.style.setProperty(`--${key}`, value);
+      });
     };
 
     const renderWaterfall = (items) => {
@@ -2245,6 +2368,7 @@
 
     const renderStation = (data) => {
       document.querySelector(".radio-tuner").style.setProperty("--needle", data.needle);
+      applyStationTheme(data);
       bindText("frequencyValue", data.frequency);
       bindText("stationName", data.name);
       bindText("stationOperator", data.operator);
@@ -2260,10 +2384,11 @@
       bindText("sideSourceB", data.sideB[0]);
       bindText("sideTitleB", data.sideB[1]);
       bindText("sideDescB", data.sideB[2]);
+      bindText("waterfallMore", `${data.name}继续收听 >`);
       renderWaterfall(data.waterfall || []);
     };
 
-    renderWaterfall(stationData.guike.waterfall);
+    renderStation(stationData.guike);
 
     document.querySelectorAll(".station-btn").forEach((button) => {
       button.addEventListener("click", () => {
