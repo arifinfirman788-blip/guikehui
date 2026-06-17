@@ -824,16 +824,14 @@
     }
 
     .capability-card {
-      display: grid;
-      grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
-      gap: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 18px;
       background: #fff;
       box-shadow: 0 12px 30px rgba(23, 32, 42, 0.05);
-      min-height: 340px;
-      align-items: stretch;
     }
 
     .capability-card h3 {
@@ -864,9 +862,7 @@
       border: 1px solid #e3ebef;
       border-radius: 16px;
       background: #eef5f7;
-      aspect-ratio: 1 / 0.86;
-      height: 100%;
-      min-height: 268px;
+      height: 300px;
     }
 
     .mini-shot img {
