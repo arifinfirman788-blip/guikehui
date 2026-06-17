@@ -11,14 +11,6 @@
 
 ## GitHub Pages 部署
 
-仓库已包含 `.github/workflows/pages.yml`。推送到 `main` 分支后，GitHub Actions 会自动发布静态页面。
-
-如果首次部署方式选择 GitHub Actions，需要在 GitHub 仓库中进入：
-
-`Settings` -> `Pages` -> `Build and deployment` -> `Source`，选择 `GitHub Actions`。
-
-也可以选择分支部署：
-
 `Settings` -> `Pages` -> `Build and deployment` -> `Source`，选择 `Deploy from a branch`，分支选择 `gh-pages`，目录选择 `/ (root)`。
 
 部署完成后访问：
