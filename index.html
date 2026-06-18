@@ -986,6 +986,143 @@
       color: var(--accent-deep);
     }
 
+    .confirm-zone {
+      margin-top: 22px;
+      padding: 22px;
+      border: 1px solid #e8d6c4;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff9f3, #ffffff);
+      box-shadow: var(--shadow);
+    }
+
+    .confirm-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .confirm-kicker {
+      display: inline-flex;
+      width: fit-content;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--warn);
+      background: #fff0e3;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .confirm-head h3 {
+      margin: 10px 0 8px;
+      color: #2d2119;
+      font-size: 26px;
+      line-height: 1.18;
+    }
+
+    .confirm-head p {
+      margin: 0;
+      color: #66564b;
+      font-size: 14px;
+    }
+
+    .confirm-summary {
+      display: grid;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid #ead7c8;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .confirm-summary b {
+      color: var(--warn);
+      font-size: 15px;
+    }
+
+    .confirm-summary span {
+      color: #5b4c43;
+      font-size: 13px;
+    }
+
+    .confirm-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .confirm-card {
+      min-height: 236px;
+      padding: 16px;
+      border: 1px solid #ead7c8;
+      border-radius: 14px;
+      background: #fffdfb;
+    }
+
+    .confirm-card b {
+      display: block;
+      color: var(--warn);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .confirm-card p {
+      margin: 9px 0 0;
+      color: #4e423b;
+      font-size: 13px;
+    }
+
+    .confirm-card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #6b5b50;
+      font-size: 12px;
+    }
+
+    .confirm-card li + li {
+      margin-top: 6px;
+    }
+
+    .confirm-table {
+      margin-top: 14px;
+      border: 1px solid #ead7c8;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .confirm-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid #f0ded1;
+    }
+
+    .confirm-row:first-child {
+      border-top: 0;
+      color: #fff;
+      background: var(--warn);
+      font-weight: 800;
+    }
+
+    .confirm-row span {
+      padding: 12px;
+      border-left: 1px solid #f0ded1;
+      color: #4f4139;
+      font-size: 13px;
+    }
+
+    .confirm-row:first-child span {
+      color: #fff;
+      border-left-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .confirm-row span:first-child {
+      border-left: 0;
+      font-weight: 760;
+    }
+
     .phase {
       position: relative;
       min-height: 238px;
@@ -1172,8 +1309,23 @@
       .fusion-boundary,
       .channel-policy,
       .problem-grid,
-      .purpose-grid {
+      .purpose-grid,
+      .confirm-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .confirm-head,
+      .confirm-row {
+        grid-template-columns: 1fr;
+      }
+
+      .confirm-row span {
+        border-left: 0;
+        border-top: 1px solid #f0ded1;
+      }
+
+      .confirm-row span:first-child {
+        border-top: 0;
       }
     }
 
@@ -1222,7 +1374,8 @@
       .problem-grid,
       .purpose-grid,
       .part-heading,
-      .mini-step {
+      .mini-step,
+      .confirm-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1500,6 +1653,91 @@
               <div class="mini-step"><b>3-4周</b><span>完成原型、账号会员方案、商品接入方案和埋点方案。</span></div>
               <div class="mini-step"><b>5-8周</b><span>完成开发联调，上线商品卡、下单、支付、订单查询和智能客服。</span></div>
               <div class="mini-step"><b>9-12周</b><span>灰度试运行，复盘问题，形成二期扩量和全域运营方案。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="confirm-zone" aria-label="待确认问题">
+          <div class="confirm-head">
+            <div>
+              <span class="confirm-kicker">待集团拍板</span>
+              <h3>四个统一不是只改页面，背后都有主体、合规和责任问题。</h3>
+              <p>黄小西、贵客荟及后续户外、体育、文化等板块虽然同属集团体系，但各自小程序主体、用户资产、商户号、供应商协议、收款账户和运营责任可能分属不同公司。一期落地前，需围绕“统一品牌、统一用户、统一交易、统一数据运营”逐项确认边界。</p>
+            </div>
+            <div class="confirm-summary">
+              <b>核心判断</b>
+              <span>如果采用“黄小西作为统一入口”，并不代表所有用户、商品、订单和资金都可以自然迁入黄小西主体。入口统一、主体统一、数据统一、交易统一是四个不同决策。</span>
+              <span>建议一期先定清楚三件事：用户看到的品牌是谁，交易和履约责任是谁，用户信息和经营数据能否在不同子公司之间流转。</span>
+            </div>
+          </div>
+
+          <div class="confirm-grid">
+            <article class="confirm-card">
+              <b>1. 统一品牌：到底统一到哪一层</b>
+              <p>品牌统一看似是产品问题，实际会影响小程序主体、对外协议、客服口径和用户认知。</p>
+              <ul>
+                <li>是否融合成一个小程序，还是保留多个小程序但统一黄小西入口。</li>
+                <li>如果黄小西作为入口，小程序主体是否变成黄小西对应公司。</li>
+                <li>贵客荟、户外、体育、文化等子品牌在页面上是独立频道，还是弱化为运营来源。</li>
+                <li>用户协议、隐私政策、客服名称、投诉主体和页面底部主体信息是否同步调整。</li>
+                <li>原贵客荟用户看到品牌变化后，是否需要公告、引导或重新授权。</li>
+              </ul>
+            </article>
+            <article class="confirm-card">
+              <b>2. 统一用户：用户信息如何迁移和授权</b>
+              <p>统一用户不是简单合并账号，需要确认贵客荟用户资产进入黄小西后是否有合法授权和清晰告知。</p>
+              <ul>
+                <li>贵客荟已有用户的手机号、OpenID、会员 ID、订单记录、积分权益能否迁移或映射到黄小西。</li>
+                <li>跨公司共享用户信息是否需要重新弹窗授权、更新隐私政策或单独签署授权条款。</li>
+                <li>老用户权益、券包、积分、等级、历史订单迁移后由哪家公司承诺有效。</li>
+                <li>如果用户不同意授权，是否保留贵客荟原入口和原订单查询路径。</li>
+                <li>客服查询用户订单时，黄小西、贵客荟和各子公司能看到哪些字段。</li>
+              </ul>
+            </article>
+            <article class="confirm-card">
+              <b>3. 统一交易：合同、收款和履约谁承担</b>
+              <p>交易统一是风险最高的部分，不能只看页面能否下单，还要看合同和资金流是否支持。</p>
+              <ul>
+                <li>现有供应商是和贵客荟还是其他子公司签约，原协议是否允许在黄小西入口展示和销售。</li>
+                <li>用户下单时订单主体是谁，支付进入哪个商户号，资金进哪家公司账户。</li>
+                <li>是否需要分账或内部结算，手续费、退款、对账和财务报表如何处理。</li>
+                <li>发票抬头、退款主体、售后主体、投诉主体是否和页面展示一致。</li>
+                <li>商品价格、库存、核销、违约、履约事故由哪家公司最终负责。</li>
+              </ul>
+            </article>
+            <article class="confirm-card">
+              <b>4. 统一数据运营：谁能看、谁能用、谁负责</b>
+              <p>多运营板块进入后，数据既要支撑经营，也要避免跨主体、跨业务随意使用。</p>
+              <ul>
+                <li>黄小西、贵客荟、户外、体育、文化团队分别能查看哪些用户、订单和行为数据。</li>
+                <li>经营看板按集团维度汇总时，是否涉及跨公司数据共享和最小必要原则。</li>
+                <li>频道运营方发布内容、推荐商品、触达用户时，审批和责任归属如何确定。</li>
+                <li>AI 问答使用用户历史订单、偏好和位置时，是否需要额外授权和敏感信息控制。</li>
+                <li>数据出错、推荐误导、内容违规、客服承诺不一致时，由谁处理和复盘。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="confirm-table" aria-label="统一品牌方案对比">
+            <div class="confirm-row">
+              <span>统一品牌方案</span>
+              <span>适合场景</span>
+              <span>需要重点确认的问题</span>
+            </div>
+            <div class="confirm-row">
+              <span>方案一：黄小西统一入口，贵客荟承接交易</span>
+              <span>一期最快落地，保留贵客荟既有协议、商户号、订单和履约体系。</span>
+              <span>页面需明示交易承接方；补充黄小西导流、数据授权、客服分流、订单查询和用户隐私告知。</span>
+            </div>
+            <div class="confirm-row">
+              <span>方案二：黄小西统一主体，交易和用户整体迁入</span>
+              <span>适合集团希望形成单一品牌、单一用户资产和统一经营看板。</span>
+              <span>供应商协议主体变更或重签；用户信息迁移授权；支付商户号、开票、售后、退款和财务结算重建。</span>
+            </div>
+            <div class="confirm-row">
+              <span>方案三：多主体保留，首页做频道聚合</span>
+              <span>适合后续运营板块增多，各子公司继续负责自己的资源、内容和交易。</span>
+              <span>统一入口规范、跳转规范、频道准入、数据回流、用户授权、跨主体客服和投诉处理规则。</span>
             </div>
           </div>
         </div>
