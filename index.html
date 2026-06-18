@@ -1060,6 +1060,16 @@
       background: #fffdfb;
     }
 
+    .confirm-card.technical {
+      min-height: auto;
+      border-color: #cbdbe4;
+      background: #fbfdff;
+    }
+
+    .confirm-card.technical b {
+      color: var(--blue);
+    }
+
     .confirm-card b {
       display: block;
       color: var(--warn);
@@ -1082,6 +1092,79 @@
 
     .confirm-card li + li {
       margin-top: 6px;
+    }
+
+    .tech-drawer {
+      margin-top: 14px;
+      border: 1px solid #cddde5;
+      border-radius: 16px;
+      background: #f8fbfd;
+      overflow: hidden;
+    }
+
+    .tech-drawer summary {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 18px;
+      color: #17354f;
+      background: linear-gradient(180deg, #ffffff, #f1f7fa);
+      cursor: pointer;
+      list-style: none;
+      font-weight: 820;
+    }
+
+    .tech-drawer summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tech-drawer summary::after {
+      content: "展开";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #e5f0f7;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tech-drawer[open] summary::after {
+      content: "收起";
+    }
+
+    .tech-drawer small {
+      display: block;
+      margin-top: 4px;
+      color: #637789;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .tech-panel {
+      padding: 18px;
+      border-top: 1px solid #d7e3ea;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tech-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      border-radius: 12px;
+      color: #405566;
+      background: #eef6fb;
+      font-size: 13px;
     }
 
     .confirm-table {
@@ -1310,7 +1393,8 @@
       .channel-policy,
       .problem-grid,
       .purpose-grid,
-      .confirm-grid {
+      .confirm-grid,
+      .tech-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1375,8 +1459,17 @@
       .purpose-grid,
       .part-heading,
       .mini-step,
-      .confirm-grid {
+      .confirm-grid,
+      .tech-grid {
         grid-template-columns: 1fr;
+      }
+
+      .tech-drawer summary {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-drawer summary::after {
+        width: fit-content;
       }
 
       .fusion-home {
@@ -1661,58 +1754,54 @@
           <div class="confirm-head">
             <div>
               <span class="confirm-kicker">待集团拍板</span>
-              <h3>四个统一不是只改页面，背后都有主体、合规和责任问题。</h3>
-              <p>黄小西、贵客荟及后续户外、体育、文化等板块虽然同属集团体系，但各自小程序主体、用户资产、商户号、供应商协议、收款账户和运营责任可能分属不同公司。一期落地前，需围绕“统一品牌、统一用户、统一交易、统一数据运营”逐项确认边界。</p>
+              <h3>先确认业务边界，再进入技术融合。</h3>
+              <p>黄小西、贵客荟及后续户外、体育、文化等板块虽然同属集团体系，但各自小程序主体、用户资产、商户号、供应商协议、收款账户和运营责任可能分属不同公司。一期落地前，必须先明确必要业务问题；技术侧的用户体系、架构、数据库和接口联调，应在业务方案确认后再细化。</p>
             </div>
             <div class="confirm-summary">
               <b>核心判断</b>
-              <span>如果采用“黄小西作为统一入口”，并不代表所有用户、商品、订单和资金都可以自然迁入黄小西主体。入口统一、主体统一、数据统一、交易统一是四个不同决策。</span>
-              <span>建议一期先定清楚三件事：用户看到的品牌是谁，交易和履约责任是谁，用户信息和经营数据能否在不同子公司之间流转。</span>
+              <span>默认展示的是领导和集团层面需要先拍板的业务问题：品牌主体、用户授权、交易责任、数据权限。</span>
+              <span>技术问题可以沟通，但不能替代前置业务决策。只有明确“谁作为主体、谁承担责任、用户和资金如何流转”，技术方案才有稳定边界。</span>
             </div>
           </div>
 
           <div class="confirm-grid">
             <article class="confirm-card">
-              <b>1. 统一品牌：到底统一到哪一层</b>
-              <p>品牌统一看似是产品问题，实际会影响小程序主体、对外协议、客服口径和用户认知。</p>
+              <b>必要问题 1：统一品牌和小程序主体</b>
+              <p>先确认集团到底要“统一入口”还是“统一主体”，这决定用户看到谁、协议签谁、责任归谁。</p>
               <ul>
                 <li>是否融合成一个小程序，还是保留多个小程序但统一黄小西入口。</li>
                 <li>如果黄小西作为入口，小程序主体是否变成黄小西对应公司。</li>
-                <li>贵客荟、户外、体育、文化等子品牌在页面上是独立频道，还是弱化为运营来源。</li>
-                <li>用户协议、隐私政策、客服名称、投诉主体和页面底部主体信息是否同步调整。</li>
-                <li>原贵客荟用户看到品牌变化后，是否需要公告、引导或重新授权。</li>
+                <li>贵客荟、户外、体育、文化等子品牌是频道露出，还是弱化为运营来源。</li>
+                <li>用户协议、隐私政策、客服名称、投诉主体和页面主体信息是否同步调整。</li>
               </ul>
             </article>
             <article class="confirm-card">
-              <b>2. 统一用户：用户信息如何迁移和授权</b>
-              <p>统一用户不是简单合并账号，需要确认贵客荟用户资产进入黄小西后是否有合法授权和清晰告知。</p>
+              <b>必要问题 2：统一用户和权益承诺</b>
+              <p>先确认贵客荟用户资产能否进入黄小西，以及老用户权益由哪家公司继续承诺有效。</p>
               <ul>
-                <li>贵客荟已有用户的手机号、OpenID、会员 ID、订单记录、积分权益能否迁移或映射到黄小西。</li>
+                <li>贵客荟已有用户的手机号、会员 ID、订单记录、积分权益能否迁移或映射到黄小西。</li>
                 <li>跨公司共享用户信息是否需要重新弹窗授权、更新隐私政策或单独签署授权条款。</li>
                 <li>老用户权益、券包、积分、等级、历史订单迁移后由哪家公司承诺有效。</li>
                 <li>如果用户不同意授权，是否保留贵客荟原入口和原订单查询路径。</li>
-                <li>客服查询用户订单时，黄小西、贵客荟和各子公司能看到哪些字段。</li>
               </ul>
             </article>
             <article class="confirm-card">
-              <b>3. 统一交易：合同、收款和履约谁承担</b>
-              <p>交易统一是风险最高的部分，不能只看页面能否下单，还要看合同和资金流是否支持。</p>
+              <b>必要问题 3：统一交易和资金责任</b>
+              <p>先确认交易链路里谁签约、谁收款、谁开票、谁退款、谁履约，不能只看页面能否下单。</p>
               <ul>
                 <li>现有供应商是和贵客荟还是其他子公司签约，原协议是否允许在黄小西入口展示和销售。</li>
                 <li>用户下单时订单主体是谁，支付进入哪个商户号，资金进哪家公司账户。</li>
-                <li>是否需要分账或内部结算，手续费、退款、对账和财务报表如何处理。</li>
                 <li>发票抬头、退款主体、售后主体、投诉主体是否和页面展示一致。</li>
                 <li>商品价格、库存、核销、违约、履约事故由哪家公司最终负责。</li>
               </ul>
             </article>
             <article class="confirm-card">
-              <b>4. 统一数据运营：谁能看、谁能用、谁负责</b>
-              <p>多运营板块进入后，数据既要支撑经营，也要避免跨主体、跨业务随意使用。</p>
+              <b>必要问题 4：统一运营和数据权限</b>
+              <p>先确认多运营板块进入后谁能发布、谁能看数、谁能触达用户、出了问题谁负责。</p>
               <ul>
                 <li>黄小西、贵客荟、户外、体育、文化团队分别能查看哪些用户、订单和行为数据。</li>
-                <li>经营看板按集团维度汇总时，是否涉及跨公司数据共享和最小必要原则。</li>
                 <li>频道运营方发布内容、推荐商品、触达用户时，审批和责任归属如何确定。</li>
-                <li>AI 问答使用用户历史订单、偏好和位置时，是否需要额外授权和敏感信息控制。</li>
+                <li>经营看板按集团维度汇总时，是否涉及跨公司数据共享和最小必要原则。</li>
                 <li>数据出错、推荐误导、内容违规、客服承诺不一致时，由谁处理和复盘。</li>
               </ul>
             </article>
@@ -1740,6 +1829,65 @@
               <span>统一入口规范、跳转规范、频道准入、数据回流、用户授权、跨主体客服和投诉处理规则。</span>
             </div>
           </div>
+
+          <details class="tech-drawer">
+            <summary>
+              <span>后置技术沟通问题<small>前置业务方案确认后，再由产品、技术、法务、财务共同细化。</small></span>
+            </summary>
+            <div class="tech-panel">
+              <div class="tech-grid">
+                <article class="confirm-card technical">
+                  <b>用户体系如何统一</b>
+                  <ul>
+                    <li>手机号、OpenID、UnionID、会员 ID、贵客荟用户 ID 如何映射。</li>
+                    <li>历史订单、积分、券包、等级、收藏和偏好数据如何迁移或只读保留。</li>
+                    <li>用户授权状态、注销、解绑、拒绝授权后的降级路径如何处理。</li>
+                  </ul>
+                </article>
+                <article class="confirm-card technical">
+                  <b>双方技术架构如何连接</b>
+                  <ul>
+                    <li>黄小西前端入口、AI 服务、推荐服务与贵客荟交易服务如何调用。</li>
+                    <li>商品、库存、价格、订单、支付、退款、核销、客服接口由谁提供 SLA。</li>
+                    <li>接口失败、超时、库存不一致、价格变动时页面如何兜底。</li>
+                  </ul>
+                </article>
+                <article class="confirm-card technical">
+                  <b>数据库和数据归属如何设计</b>
+                  <ul>
+                    <li>是数据迁移、双库同步、实时接口查询，还是建立集团中台映射表。</li>
+                    <li>订单主库、会员主库、商品主库和行为日志分别以哪个系统为准。</li>
+                    <li>数据脱敏、权限分级、日志留存、审计追踪如何做。</li>
+                  </ul>
+                </article>
+                <article class="confirm-card technical">
+                  <b>交易链路如何联调</b>
+                  <ul>
+                    <li>商品卡、下单、支付、订单查询、退款、核销、发票、客服入口如何串联。</li>
+                    <li>跨主体交易时，订单详情页和支付页如何展示交易承接方。</li>
+                    <li>灰度期间如何区分黄小西订单、贵客荟订单和跳转订单。</li>
+                  </ul>
+                </article>
+                <article class="confirm-card technical">
+                  <b>运营后台如何协同</b>
+                  <ul>
+                    <li>各频道运营方是否共用后台，还是各自后台发布后同步到首页频道池。</li>
+                    <li>内容审核、商品推荐、榜单规则、活动配置和上下架权限如何分级。</li>
+                    <li>运营看板按频道、主体、商品、订单和转化漏斗如何拆分。</li>
+                  </ul>
+                </article>
+                <article class="confirm-card technical">
+                  <b>上线、灰度和回滚如何保障</b>
+                  <ul>
+                    <li>先灰度哪些用户和商品，如何监控下单、支付、退款和客服异常。</li>
+                    <li>用户体系或交易接口异常时，能否一键切回贵客荟原交易链路。</li>
+                    <li>上线前需要准备哪些测试账号、沙箱商户号、测试商品和应急预案。</li>
+                  </ul>
+                </article>
+              </div>
+              <div class="tech-note">技术沟通的前提：先确认品牌主体、用户授权、交易责任、数据权限四类业务问题。否则技术侧即使能打通接口，也可能出现协议不支持、资金无法结算、用户数据不能流转、客服责任不清的问题。</div>
+            </div>
+          </details>
         </div>
 
         <div class="roles">
