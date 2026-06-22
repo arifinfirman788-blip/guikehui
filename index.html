@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>黄小西 × 贵客荟一期融合落地页</title>
+  <title>黄小西 × 贵客荟一期相互嵌入落地建议</title>
   <style>
     :root {
       --ink: #17202a;
@@ -939,6 +939,426 @@
       font-size: 16px;
     }
 
+    .compact-capabilities {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .capability-brief {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(23, 32, 42, 0.05);
+    }
+
+    .capability-brief h3 {
+      margin: 0 0 10px;
+      color: var(--accent-deep);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .capability-brief p {
+      margin: 0;
+      color: #4b5a65;
+      font-size: 15px;
+    }
+
+    .capability-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .capability-pill {
+      min-height: 138px;
+      padding: 16px;
+      border: 1px solid #e1eaee;
+      border-radius: 14px;
+      background: #fbfdfd;
+    }
+
+    .capability-pill b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--accent-deep);
+      font-size: 16px;
+    }
+
+    .capability-pill span {
+      color: #4b5a65;
+      font-size: 13px;
+    }
+
+    .merged-path {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .path-principle {
+      padding: 24px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-deep), #0b6d5c);
+      box-shadow: 0 18px 40px rgba(7, 87, 72, 0.18);
+    }
+
+    .path-principle h3 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1.16;
+    }
+
+    .path-principle p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 16px;
+    }
+
+    .path-steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .path-step-card {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .path-step-card b {
+      color: var(--accent-deep);
+      font-size: 15px;
+    }
+
+    .path-step-card span {
+      color: #475763;
+      font-size: 14px;
+    }
+
+    .dual-paths {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .embed-path-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(23, 32, 42, 0.06);
+    }
+
+    .embed-path-head {
+      padding: 22px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
+    }
+
+    .embed-path-card.reverse .embed-path-head {
+      background: linear-gradient(135deg, #285e8f, #1d7ca8);
+    }
+
+    .embed-path-head b {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: rgba(255, 255, 255, 0.92);
+      font-size: 12px;
+      font-weight: 820;
+    }
+
+    .embed-path-card.reverse .embed-path-head b {
+      color: var(--blue);
+    }
+
+    .embed-path-head h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.16;
+    }
+
+    .embed-path-head p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 15px;
+    }
+
+    .embed-path-body {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .embed-step {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid #e1eaee;
+      border-radius: 14px;
+      background: #fbfdfd;
+    }
+
+    .embed-step b {
+      color: var(--accent-deep);
+      font-size: 14px;
+    }
+
+    .embed-path-card.reverse .embed-step b {
+      color: var(--blue);
+    }
+
+    .embed-step span {
+      color: #475763;
+      font-size: 13px;
+    }
+
+    .embed-path-note {
+      padding: 15px;
+      border-radius: 14px;
+      color: #40505b;
+      background: #eef7f4;
+      font-size: 13px;
+    }
+
+    .embed-path-card.reverse .embed-path-note {
+      background: #eaf3f8;
+    }
+
+    .direction-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .direction-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(23, 32, 42, 0.06);
+    }
+
+    .direction-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
+    }
+
+    .direction-head h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.14;
+    }
+
+    .direction-head p {
+      max-width: 820px;
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 15px;
+    }
+
+    .direction-badge {
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .direction-card.trade .direction-head {
+      background: linear-gradient(135deg, #285e8f, #1d7ca8);
+    }
+
+    .direction-card.trade .direction-badge {
+      color: #285e8f;
+    }
+
+    .direction-card.member .direction-head {
+      background: linear-gradient(135deg, #6b3f7a, #8f5aa8);
+    }
+
+    .direction-card.member .direction-badge {
+      color: #6b3f7a;
+    }
+
+    .question-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .question-group {
+      padding: 18px;
+      border-radius: 14px;
+      background: #f5f9f8;
+      border: 1px solid #e1eaee;
+    }
+
+    .question-group h4 {
+      margin: 0 0 12px;
+      color: var(--accent-deep);
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .direction-card.trade .question-group h4 {
+      color: var(--blue);
+    }
+
+    .direction-card.member .question-group h4 {
+      color: #6b3f7a;
+    }
+
+    .question-group ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #485763;
+      font-size: 13px;
+    }
+
+    .question-group li + li {
+      margin-top: 7px;
+    }
+
+    .decision-questions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px 18px 0;
+    }
+
+    .business-question {
+      padding: 16px;
+      border: 1px solid #dbe6eb;
+      border-radius: 14px;
+      background: #fbfdfd;
+    }
+
+    .business-question strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--accent-deep);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .direction-card.trade .business-question strong {
+      color: var(--blue);
+    }
+
+    .direction-card.member .business-question strong {
+      color: #6b3f7a;
+    }
+
+    .business-question p {
+      margin: 0;
+      color: #4b5a65;
+      font-size: 13px;
+    }
+
+    .question-drawers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+    }
+
+    .detail-drawer {
+      overflow: hidden;
+      border: 1px solid #dbe6eb;
+      border-radius: 14px;
+      background: #f7fbfa;
+    }
+
+    .detail-drawer summary {
+      min-height: 54px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      color: var(--accent-deep);
+      cursor: pointer;
+      list-style: none;
+      font-size: 16px;
+      font-weight: 820;
+    }
+
+    .detail-drawer summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-drawer summary::after {
+      content: "展开";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: #e5f4ef;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .detail-drawer[open] summary::after {
+      content: "收起";
+    }
+
+    .direction-card.trade .detail-drawer summary,
+    .direction-card.trade .detail-drawer summary::after {
+      color: var(--blue);
+    }
+
+    .direction-card.trade .detail-drawer summary::after {
+      background: #e7f1f7;
+    }
+
+    .direction-card.member .detail-drawer summary,
+    .direction-card.member .detail-drawer summary::after {
+      color: #6b3f7a;
+    }
+
+    .direction-card.member .detail-drawer summary::after {
+      background: #f1e8f4;
+    }
+
+    .detail-drawer ul {
+      margin: 0;
+      padding: 0 18px 18px 34px;
+      color: #485763;
+      font-size: 13px;
+    }
+
+    .detail-drawer li + li {
+      margin-top: 7px;
+    }
+
     .fusion-summary {
       display: grid;
       grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
@@ -1378,7 +1798,13 @@
       .capability-columns,
       .capability-card,
       .fusion-summary,
-      .landing-grid {
+      .landing-grid,
+      .compact-capabilities,
+      .merged-path,
+      .dual-paths,
+      .question-columns,
+      .decision-questions,
+      .question-drawers {
         grid-template-columns: 1fr;
       }
 
@@ -1394,7 +1820,8 @@
       .problem-grid,
       .purpose-grid,
       .confirm-grid,
-      .tech-grid {
+      .tech-grid,
+      .capability-pills {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1460,7 +1887,11 @@
       .part-heading,
       .mini-step,
       .confirm-grid,
-      .tech-grid {
+      .tech-grid,
+      .capability-pills,
+      .path-step-card,
+      .embed-step,
+      .direction-head {
         grid-template-columns: 1fr;
       }
 
@@ -1533,12 +1964,12 @@
     <div class="topbar-inner">
       <a class="brand" href="#top" aria-label="返回顶部">
         <span class="brand-mark">HX</span>
-        <span>黄小西 × 贵客荟<small>一期融合落地汇报</small></span>
+        <span>黄小西 × 贵客荟<small>一期相互嵌入落地建议</small></span>
       </a>
       <nav class="nav" aria-label="页面导航">
-        <a href="#part-current">现状问题</a>
-        <a href="#part-fusion">融合思路</a>
-        <a href="#part-landing">落地路径</a>
+        <a href="#part-current">现有能力</a>
+        <a href="#part-fusion">双向路径</a>
+        <a href="#part-focus">三项方案</a>
       </nav>
     </div>
   </header>
@@ -1548,12 +1979,12 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div>
-            <span class="tag">三部分汇报结构</span>
-            <h1 id="hero-title">用黄小西承接用户，用贵客荟完成交易。</h1>
-            <p class="lead">先讲双方已有能力和当前问题，再讲融合后的产品思路与目标，最后讲一期怎么落地、各方怎么协同。</p>
+            <span class="tag">能力基础 · 相互嵌入 · 三件重点</span>
+            <h1 id="hero-title">把贵客荟订单转成黄小西行程卡。</h1>
+            <p class="lead">一期聚焦两件事：贵客荟订单进入黄小西行程，黄小西优选进入贵客荟交易页面。</p>
             <div class="hero-actions">
-              <a class="button primary" href="#part-fusion">查看融合思路</a>
-              <a class="button secondary" href="#part-landing">查看落地路径</a>
+              <a class="button primary" href="#part-fusion">查看双向路径</a>
+              <a class="button secondary" href="#part-focus">查看三项方案</a>
             </div>
           </div>
 
@@ -1565,28 +1996,28 @@
             <div class="flow-stack">
               <div class="flow-card">
                 <div class="number">01</div>
-                <div><strong>统一登录</strong><span>黄小西账号绑定贵客荟会员身份</span></div>
-                <em class="owner">双方技术</em>
-              </div>
-              <div class="flow-card">
-                <div class="number">02</div>
-                <div><strong>智能咨询</strong><span>识别出游意图、同行人、时间与预算</span></div>
-                <em class="owner">黄小西</em>
-              </div>
-              <div class="flow-card">
-                <div class="number">03</div>
-                <div><strong>商品推荐</strong><span>AI 输出可售酒店、门票、套餐卡片</span></div>
-                <em class="owner">联合</em>
-              </div>
-              <div class="flow-card">
-                <div class="number">04</div>
-                <div><strong>下单支付</strong><span>贵客荟承接库存、价格、订单与支付</span></div>
+                <div><strong>贵客荟购买</strong><span>游客在贵客荟交易页面完成门票、商品、套餐购买</span></div>
                 <em class="owner">贵客荟</em>
               </div>
               <div class="flow-card">
+                <div class="number">02</div>
+                <div><strong>订单回到行程</strong><span>购买、核销、退款、改期状态同步到黄小西</span></div>
+                <em class="owner">双方配合</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">03</div>
+                <div><strong>生成行程卡</strong><span>黄小西把贵客荟订单转成行程卡片</span></div>
+                <em class="owner">黄小西</em>
+              </div>
+              <div class="flow-card">
+                <div class="number">04</div>
+                <div><strong>会员归属不变</strong><span>会员、积分、券包仍由贵客荟维护</span></div>
+                <em class="owner">贵客荟主导</em>
+              </div>
+              <div class="flow-card">
                 <div class="number">05</div>
-                <div><strong>订单服务</strong><span>黄小西查订单、AI 客服、人工转接</span></div>
-                <em class="owner">联合</em>
+                <div><strong>状态同步</strong><span>退款、改期、核销状态回到行程卡</span></div>
+                <em class="owner">双方配合</em>
               </div>
             </div>
           </aside>
@@ -1597,49 +2028,21 @@
         <div class="part-heading">
           <span class="part-index">第一部分</span>
           <div>
-            <h2 id="current-title">现有能力与主要问题。</h2>
-            <p>黄小西有智能交互和前端服务基础，贵客荟有交易、会员、资源和运营基础，但目前两套能力还没有形成统一入口、统一用户和统一数据闭环。</p>
+            <h2 id="current-title">与本次互通相关的能力底座。</h2>
           </div>
         </div>
 
-        <div class="capability-columns">
-          <article class="capability-card">
-            <div class="mini-shot">
-              <img src="qa/huangxiaoxi-current-home.png" alt="黄小西当前首页能力截图" />
-            </div>
-            <div>
-              <h3>黄小西现有能力</h3>
-              <ul>
-                <li>已有 AI 问答、帮我找、行程推荐、内容种草和底部导航基础。</li>
-                <li>具备文旅智能体、景区酒店问答、路线规划和数据加工能力。</li>
-                <li>适合作为集团统一 C 端服务入口和智能服务中枢。</li>
-              </ul>
-            </div>
+        <div class="compact-capabilities">
+          <article class="capability-brief">
+            <h3>从“能力罗列”改为“闭环支撑”。</h3>
+            <p>黄小西已有AI问答、地图和行程能力；贵客荟已有商品、订单、支付、核销、售后、会员和积分。一期重点不是再做一套功能，而是把贵客荟订单转成黄小西行程卡。</p>
           </article>
-
-          <article class="capability-card">
-            <div class="mini-shot gkh-mini" aria-label="贵客荟页面能力截图">
-              <img src="assets/guikehui-home.png" alt="贵客荟首页能力截图" />
-              <img src="assets/guikehui-content.png" alt="贵客荟内容运营截图" />
-              <img src="assets/guikehui-profile.png" alt="贵客荟会员订单截图" />
-            </div>
-            <div>
-              <h3>贵客荟现有能力</h3>
-              <ul>
-                <li>沉淀了门票、酒店、线路、优惠券、订单、支付和会员权益。</li>
-                <li>具备资源上架、分销、核销、订单履约和运营活动能力。</li>
-                <li>可作为集团文旅产业互联平台的交易底座和业务底盘。</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-
-        <div class="problem-grid" aria-label="当前主要问题">
-          <article class="problem-card"><b>入口分散</b><p>多个小程序和页面独立运行，用户不知道从哪里进入，集团流量难沉淀。</p></article>
-          <article class="problem-card"><b>用户割裂</b><p>账号、会员、积分、订单没有完全贯通，无法形成统一用户资产。</p></article>
-          <article class="problem-card"><b>数据孤岛</b><p>交互数据、交易数据、会员数据分散，难以反哺选品、营销和经营决策。</p></article>
-          <article class="problem-card"><b>AI 脱链</b><p>黄小西能问能推荐，但与贵客荟商品、库存、支付和履约链路结合不深。</p></article>
-          <article class="problem-card"><b>运营分散</b><p>各板块各做内容和活动，缺少统一频道机制和内容质量规则。</p></article>
+          <div class="capability-pills" aria-label="现有能力简表">
+            <article class="capability-pill"><b>智能入口</b><span>黄小西负责AI问答、搜索、路线建议和地图入口。</span></article>
+            <article class="capability-pill"><b>行程承接</b><span>黄小西负责把贵客荟订单、预约、核销状态组织成行程卡。</span></article>
+            <article class="capability-pill"><b>交易底座</b><span>贵客荟负责商品、库存、价格、下单、支付、退款、核销和售后。</span></article>
+            <article class="capability-pill"><b>会员积分</b><span>贵客荟沉淀会员、积分、券包和订单资产。</span></article>
+          </div>
         </div>
       </section>
 
@@ -1647,294 +2050,189 @@
         <div class="part-heading">
           <span class="part-index">第二部分</span>
           <div>
-            <h2 id="fusion-title">融合后的思路、目的与内容。</h2>
-            <p>总体思路是“黄小西做统一入口和智能中枢，贵客荟做交易底座和运营供给”，通过四个统一和四层融合，把智能交互、内容发现、会员权益、商品交易和数据运营串成闭环。</p>
+            <h2 id="fusion-title">双向嵌入的落地路径。</h2>
           </div>
         </div>
 
-        <div class="purpose-grid" aria-label="融合目标">
-          <div class="purpose-card"><b>服务升级</b>从用户自己找产品，变成黄小西主动识别需求、推荐玩法和服务提醒。</div>
-          <div class="purpose-card"><b>交易转化</b>从内容和问答跳转到可售商品，形成问即能订、订即能服的链路。</div>
-          <div class="purpose-card"><b>用户沉淀</b>打通会员、积分、券包、订单和行为数据，从流量运营转向用户经营。</div>
-          <div class="purpose-card"><b>运营提效</b>用 AI 辅助客服、内容、营销和数据分析，让各运营板块有统一阵地。</div>
-        </div>
+        <div class="dual-paths" aria-label="双向嵌入路径">
+          <article class="embed-path-card">
+            <div class="embed-path-head">
+              <b>路径一：贵客荟嵌入黄小西</b>
+              <h3>把贵客荟订单接到黄小西行程卡。</h3>
+              <p>AI问答入口已完成嵌入，本期重点补齐行程卡内容，让用户购买后能在黄小西看到对应行程。</p>
+            </div>
+            <div class="embed-path-body">
+              <div class="embed-step"><b>已具备</b><span>黄小西已有AI问答、地图和行程能力；贵客荟已有商品、订单、支付、核销、售后和会员积分能力。</span></div>
+              <div class="embed-step"><b>本期动作</b><span>贵客荟将订单、票券、预约时段、核销、退款改期等结果回到黄小西，黄小西生成行程卡。</span></div>
+              <div class="embed-step"><b>展示位置</b><span>行程卡主要展示在黄小西行程页，个人中心可保留订单入口，不新增一套交易流程。</span></div>
+              <div class="embed-step"><b>状态同步</b><span>订单支付、退款、改期、核销状态以贵客荟为准，黄小西只同步展示到行程卡。</span></div>
+              <div class="embed-step"><b>验收标准</b><span>购买完成可生成行程卡；退款改期可同步状态；核销状态可在行程卡展示。</span></div>
+            </div>
+          </article>
 
-        <div class="fusion-summary">
-          <div class="fusion-home">
-            <div class="fusion-topline">
-              <div>
-                <span class="tag">融合后首页方向</span>
-                <h2>首页做发现和服务入口，交易交给优选承接。</h2>
-              </div>
-              <p>顶部放问答引导、贵州榜单、游玩地图、票券预订、活动日历等通用服务；下方用“文旅电台”承接多运营板块的内容推荐。</p>
+          <article class="embed-path-card reverse">
+            <div class="embed-path-head">
+              <b>路径二：黄小西嵌入贵客荟</b>
+              <h3>把黄小西优选模块改为贵客荟交易页面承接。</h3>
+              <p>黄小西不复制商城与支付能力，优选模块整体由贵客荟交易页面承接。</p>
             </div>
-            <div class="fusion-ia">
-              <div class="ia-item"><b>统一入口</b>黄小西承接用户进入、智能问答、路线细化和服务转接。</div>
-              <div class="ia-item"><b>交易底座</b>贵客荟承接商品、库存、价格、订单、支付、核销和售后。</div>
-              <div class="ia-item"><b>会员权益</b>会员等级、积分、券包、活动权益逐步互通。</div>
-              <div class="ia-item"><b>数据闭环</b>交互、点击、下单、支付、客服、复购形成统一看板。</div>
+            <div class="embed-path-body">
+              <div class="embed-step"><b>模块改造</b><span>黄小西底导或页面中的“优选”不再自建商品列表，整体打开贵客荟交易专区，承接门票、套餐、酒店、文创和活动商品。</span></div>
+              <div class="embed-step"><b>入口分发</b><span>优选入口、商品相关入口统一进入贵客荟对应页面。</span></div>
+              <div class="embed-step"><b>交易保留</b><span>商品详情、库存价格、下单支付、订单详情、退款售后、核销履约继续留在贵客荟。</span></div>
+              <div class="embed-step"><b>购买结果</b><span>支付成功、退款、改期、核销结果由贵客荟回到黄小西，用于生成或更新行程卡。</span></div>
+              <div class="embed-step"><b>边界要求</b><span>黄小西只承接订单到行程卡，不承接贵客荟交易、售后、会员和积分管理。</span></div>
             </div>
-            <div class="fusion-rule">
-              <b>文旅电台的边界</b>
-              <p>电台只负责频道化内容发现，不重复榜单、不重复行程、不抢优选交易。后续运营板块变多时，首页只露出 3 到 5 个精选频道，其余进入频道池和频道广场。</p>
-            </div>
-          </div>
-
-          <div class="fusion-preview">
-            <div class="screen-pair">
-              <figure>
-                <div class="screen-frame">
-                  <img src="qa/fusion-home-no-slogan-390.png" alt="融合后首页首屏原型，展示通用服务入口" />
-                </div>
-                <figcaption class="screen-caption">首屏：通用服务和黄小西管家</figcaption>
-              </figure>
-              <figure>
-                <div class="screen-frame">
-                  <img src="qa/fusion-home-waterfall-390.png" alt="融合后首页文旅电台原型，展示频道内容和瀑布流" />
-                </div>
-                <figcaption class="screen-caption">下滑：文旅电台和频道瀑布流</figcaption>
-              </figure>
-            </div>
-            <div class="prototype-note">
-              <b>融合哪些东西</b>
-              <ul class="fusion-list">
-                <li>品牌与入口：对外以黄小西作为统一服务入口。</li>
-                <li>商品与交易：贵客荟能力作为优选和交易组件接入。</li>
-                <li>内容与频道：贵客说、户外、体育、文化等运营板块进入频道池。</li>
-                <li>会员与数据：统一身份、会员权益、订单和行为数据。</li>
-              </ul>
-              <div class="preview-actions">
-                <a class="button primary" href="fusion-home-prototype.html" target="_blank" rel="noreferrer">打开融合首页原型</a>
-              </div>
-            </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      <section id="part-landing" class="report-part" aria-labelledby="landing-title">
+      <section id="part-focus" class="report-part" aria-labelledby="focus-title">
         <div class="part-heading">
           <span class="part-index">第三部分</span>
           <div>
-            <h2 id="landing-title">一期如何落地。</h2>
-            <p>一期不做大而全，先完成底座打通和两个试点场景，证明“黄小西能带来转化，贵客荟能承接交易，集团能沉淀用户资产”。</p>
+            <h2 id="focus-title">三项嵌入方案与待确认问题。</h2>
           </div>
         </div>
 
-        <div class="principles">
-          <article class="principle"><b>统一品牌</b><p>对外统一黄小西智游入口，贵客荟作为交易和会员能力内置露出。</p></article>
-          <article class="principle"><b>统一用户</b><p>手机号、OpenID、会员 ID 建立映射，先跑通一号登录和订单身份一致。</p></article>
-          <article class="principle"><b>统一交易</b><p>商品展示、库存价格校验、下单支付、订单查询、退款核销闭环跑通。</p></article>
-          <article class="principle"><b>统一数据</b><p>建立咨询、点击、下单、支付、客服、复购漏斗，作为领导汇报看板。</p></article>
-        </div>
-
-        <div class="landing-grid">
-          <div class="landing-card">
-            <h3>一期工作拆解</h3>
-            <ul class="landing-list">
-              <li>机制建立：成立联合专项组，确认总负责人、产品、技术、运营、客服和数据责任人。</li>
-              <li>原型确认：确定首页、优选、订单、会员、客服和频道内容的页面边界。</li>
-              <li>接口联调：打通商品、库存、价格、订单、支付、会员、券包和核销接口。</li>
-              <li>试点运营：先选核心景区和自营酒店，补齐图片、规则、价格、库存和客服口径。</li>
-              <li>数据验收：每周看账号绑定、推荐点击、下单支付、客服解决和复购数据。</li>
-            </ul>
-          </div>
-
-          <div class="landing-card">
-            <h3>12 周推进节奏</h3>
-            <div class="mini-timeline">
-              <div class="mini-step"><b>1-2周</b><span>定范围、定机制、定试点资源和接口清单。</span></div>
-              <div class="mini-step"><b>3-4周</b><span>完成原型、账号会员方案、商品接入方案和埋点方案。</span></div>
-              <div class="mini-step"><b>5-8周</b><span>完成开发联调，上线商品卡、下单、支付、订单查询和智能客服。</span></div>
-              <div class="mini-step"><b>9-12周</b><span>灰度试运行，复盘问题，形成二期扩量和全域运营方案。</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="confirm-zone" aria-label="待确认问题">
-          <div class="confirm-head">
-            <div>
-              <span class="confirm-kicker">待集团拍板</span>
-              <h3>先确认业务边界，再进入技术融合。</h3>
-              <p>黄小西、贵客荟及后续户外、体育、文化等板块虽然同属集团体系，但各自小程序主体、用户资产、商户号、供应商协议、收款账户和运营责任可能分属不同公司。一期落地前，必须先明确必要业务问题；技术侧的用户体系、架构、数据库和接口联调，应在业务方案确认后再细化。</p>
-            </div>
-            <div class="confirm-summary">
-              <b>核心判断</b>
-              <span>默认展示的是领导和集团层面需要先拍板的业务问题：品牌主体、用户授权、交易责任、数据权限。</span>
-              <span>技术问题可以沟通，但不能替代前置业务决策。只有明确“谁作为主体、谁承担责任、用户和资金如何流转”，技术方案才有稳定边界。</span>
-            </div>
-          </div>
-
-          <div class="confirm-grid">
-            <article class="confirm-card">
-              <b>必要问题 1：统一品牌和小程序主体</b>
-              <p>先确认集团到底要“统一入口”还是“统一主体”，这决定用户看到谁、协议签谁、责任归谁。</p>
-              <ul>
-                <li>是否融合成一个小程序，还是保留多个小程序但统一黄小西入口。</li>
-                <li>如果黄小西作为入口，小程序主体是否变成黄小西对应公司。</li>
-                <li>贵客荟、户外、体育、文化等子品牌是频道露出，还是弱化为运营来源。</li>
-                <li>用户协议、隐私政策、客服名称、投诉主体和页面主体信息是否同步调整。</li>
-              </ul>
-            </article>
-            <article class="confirm-card">
-              <b>必要问题 2：统一用户和权益承诺</b>
-              <p>先确认贵客荟用户资产能否进入黄小西，以及老用户权益由哪家公司继续承诺有效。</p>
-              <ul>
-                <li>贵客荟已有用户的手机号、会员 ID、订单记录、积分权益能否迁移或映射到黄小西。</li>
-                <li>跨公司共享用户信息是否需要重新弹窗授权、更新隐私政策或单独签署授权条款。</li>
-                <li>老用户权益、券包、积分、等级、历史订单迁移后由哪家公司承诺有效。</li>
-                <li>如果用户不同意授权，是否保留贵客荟原入口和原订单查询路径。</li>
-              </ul>
-            </article>
-            <article class="confirm-card">
-              <b>必要问题 3：统一交易和资金责任</b>
-              <p>先确认交易链路里谁签约、谁收款、谁开票、谁退款、谁履约，不能只看页面能否下单。</p>
-              <ul>
-                <li>现有供应商是和贵客荟还是其他子公司签约，原协议是否允许在黄小西入口展示和销售。</li>
-                <li>用户下单时订单主体是谁，支付进入哪个商户号，资金进哪家公司账户。</li>
-                <li>发票抬头、退款主体、售后主体、投诉主体是否和页面展示一致。</li>
-                <li>商品价格、库存、核销、违约、履约事故由哪家公司最终负责。</li>
-              </ul>
-            </article>
-            <article class="confirm-card">
-              <b>必要问题 4：统一运营和数据权限</b>
-              <p>先确认多运营板块进入后谁能发布、谁能看数、谁能触达用户、出了问题谁负责。</p>
-              <ul>
-                <li>黄小西、贵客荟、户外、体育、文化团队分别能查看哪些用户、订单和行为数据。</li>
-                <li>频道运营方发布内容、推荐商品、触达用户时，审批和责任归属如何确定。</li>
-                <li>经营看板按集团维度汇总时，是否涉及跨公司数据共享和最小必要原则。</li>
-                <li>数据出错、推荐误导、内容违规、客服承诺不一致时，由谁处理和复盘。</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="confirm-table" aria-label="统一品牌方案对比">
-            <div class="confirm-row">
-              <span>统一品牌方案</span>
-              <span>适合场景</span>
-              <span>需要重点确认的问题</span>
-            </div>
-            <div class="confirm-row">
-              <span>方案一：黄小西统一入口，贵客荟承接交易</span>
-              <span>一期最快落地，保留贵客荟既有协议、商户号、订单和履约体系。</span>
-              <span>页面需明示交易承接方；补充黄小西导流、数据授权、客服分流、订单查询和用户隐私告知。</span>
-            </div>
-            <div class="confirm-row">
-              <span>方案二：黄小西统一主体，交易和用户整体迁入</span>
-              <span>适合集团希望形成单一品牌、单一用户资产和统一经营看板。</span>
-              <span>供应商协议主体变更或重签；用户信息迁移授权；支付商户号、开票、售后、退款和财务结算重建。</span>
-            </div>
-            <div class="confirm-row">
-              <span>方案三：多主体保留，首页做频道聚合</span>
-              <span>适合后续运营板块增多，各子公司继续负责自己的资源、内容和交易。</span>
-              <span>统一入口规范、跳转规范、频道准入、数据回流、用户授权、跨主体客服和投诉处理规则。</span>
-            </div>
-          </div>
-
-          <details class="tech-drawer">
-            <summary>
-              <span>后置技术沟通问题<small>前置业务方案确认后，再由产品、技术、法务、财务共同细化。</small></span>
-            </summary>
-            <div class="tech-panel">
-              <div class="tech-grid">
-                <article class="confirm-card technical">
-                  <b>用户体系如何统一</b>
-                  <ul>
-                    <li>手机号、OpenID、UnionID、会员 ID、贵客荟用户 ID 如何映射。</li>
-                    <li>历史订单、积分、券包、等级、收藏和偏好数据如何迁移或只读保留。</li>
-                    <li>用户授权状态、注销、解绑、拒绝授权后的降级路径如何处理。</li>
-                  </ul>
-                </article>
-                <article class="confirm-card technical">
-                  <b>双方技术架构如何连接</b>
-                  <ul>
-                    <li>黄小西前端入口、AI 服务、推荐服务与贵客荟交易服务如何调用。</li>
-                    <li>商品、库存、价格、订单、支付、退款、核销、客服接口由谁提供 SLA。</li>
-                    <li>接口失败、超时、库存不一致、价格变动时页面如何兜底。</li>
-                  </ul>
-                </article>
-                <article class="confirm-card technical">
-                  <b>数据库和数据归属如何设计</b>
-                  <ul>
-                    <li>是数据迁移、双库同步、实时接口查询，还是建立集团中台映射表。</li>
-                    <li>订单主库、会员主库、商品主库和行为日志分别以哪个系统为准。</li>
-                    <li>数据脱敏、权限分级、日志留存、审计追踪如何做。</li>
-                  </ul>
-                </article>
-                <article class="confirm-card technical">
-                  <b>交易链路如何联调</b>
-                  <ul>
-                    <li>商品卡、下单、支付、订单查询、退款、核销、发票、客服入口如何串联。</li>
-                    <li>跨主体交易时，订单详情页和支付页如何展示交易承接方。</li>
-                    <li>灰度期间如何区分黄小西订单、贵客荟订单和跳转订单。</li>
-                  </ul>
-                </article>
-                <article class="confirm-card technical">
-                  <b>运营后台如何协同</b>
-                  <ul>
-                    <li>各频道运营方是否共用后台，还是各自后台发布后同步到首页频道池。</li>
-                    <li>内容审核、商品推荐、榜单规则、活动配置和上下架权限如何分级。</li>
-                    <li>运营看板按频道、主体、商品、订单和转化漏斗如何拆分。</li>
-                  </ul>
-                </article>
-                <article class="confirm-card technical">
-                  <b>上线、灰度和回滚如何保障</b>
-                  <ul>
-                    <li>先灰度哪些用户和商品，如何监控下单、支付、退款和客服异常。</li>
-                    <li>用户体系或交易接口异常时，能否一键切回贵客荟原交易链路。</li>
-                    <li>上线前需要准备哪些测试账号、沙箱商户号、测试商品和应急预案。</li>
-                  </ul>
-                </article>
+        <div class="direction-stack">
+          <article class="direction-card itinerary">
+            <div class="direction-head">
+              <div>
+                <h3>订单生成行程卡</h3>
+                <p>游客在贵客荟购买门票或商品后，黄小西只负责把订单转成对应行程卡片。</p>
               </div>
-              <div class="tech-note">技术沟通的前提：先确认品牌主体、用户授权、交易责任、数据权限四类业务问题。否则技术侧即使能打通接口，也可能出现协议不支持、资金无法结算、用户数据不能流转、客服责任不清的问题。</div>
+              <span class="direction-badge">行程卡片</span>
             </div>
-          </details>
-        </div>
+            <div class="decision-questions" aria-label="行程卡需要领导决策的问题">
+              <article class="business-question"><strong>订单范围如何划定？</strong><p>需确认哪些贵客荟订单进入黄小西行程卡，哪些仍只保留在贵客荟订单中。</p></article>
+              <article class="business-question"><strong>行程卡信息边界是什么？</strong><p>需确认行程卡展示哪些订单信息，哪些交易明细不在黄小西展示。</p></article>
+              <article class="business-question"><strong>订单状态由谁负责确认？</strong><p>需确认支付、核销、退款、改期等状态的权威来源和对外口径。</p></article>
+              <article class="business-question"><strong>异常订单由谁闭环处理？</strong><p>需确认订单缺失、状态不同步、信息错误时的责任主体和处理路径。</p></article>
+            </div>
+            <div class="question-drawers">
+              <details class="detail-drawer">
+                <summary>产品落地问题</summary>
+                <ul>
+                  <li>不同商品的行程卡形态如何区分，门票、套餐、酒店、餐饮、文创商品是否采用不同卡片模板。</li>
+                  <li>行程卡核心字段如何组织，包括游玩日期、预约时段、入园凭证、核销状态、地址、交通、退款改期入口。</li>
+                  <li>购买多张票、多人同行、跨日期套餐时，是生成一张聚合卡，还是按游客、日期、景区拆成多张卡。</li>
+                  <li>用户改期、退款、部分核销、赠送他人时，行程卡如何同步状态并给出下一步操作。</li>
+                  <li>游客是否可以手动编辑卡片时间、备注和同行人，编辑内容是否仅保留在黄小西行程卡中。</li>
+                  <li>行程卡展示在首页入口、行程页、AI管家对话和个人中心时，优先级和卡片密度如何安排。</li>
+                  <li>购买完成到行程出现之间的文案和异常处理如何设计，避免用户误认为订单丢失。</li>
+                  <li>行程卡上的购买凭证、退款改期、订单详情等入口如何回到贵客荟对应页面。</li>
+                </ul>
+              </details>
+              <details class="detail-drawer">
+                <summary>技术对接问题</summary>
+                <ul>
+                  <li>贵客荟订单、商品、SKU、票种、预约时段和核销状态如何映射成黄小西行程卡模型。</li>
+                  <li>订单事件采用接口、消息队列还是定时任务回流，如何保证幂等、补偿和顺序一致。</li>
+                  <li>用户身份如何打通，手机号、openId、unionId、会员ID不一致时采用什么绑定策略。</li>
+                  <li>商品地理位置、景区编码、POI编码和黄小西地图点位如何建立主数据映射。</li>
+                  <li>高峰购票后行程卡生成的性能目标是什么，接口超时、重复回调、消息积压如何处理。</li>
+                  <li>订单隐私数据在两个系统间传输和落库的最小字段集是什么，敏感字段如何脱敏和授权。</li>
+                  <li>核销、退款、改期等状态最终一致性如何验证，前端缓存和后端状态冲突时以哪个状态展示。</li>
+                  <li>需要监控哪些指标，包括订单回流成功率、卡片生成耗时、状态同步失败率和人工补单量。</li>
+                </ul>
+              </details>
+            </div>
+          </article>
 
-        <div class="roles">
-          <article class="role-card">
-            <span class="badge">黄小西</span>
-            <h3>牵头体验、AI 和数据</h3>
-            <ul>
-              <li>输出用户路径、首页原型、问答规则、推荐逻辑和数据看板。</li>
-              <li>完成智能问答、商品卡承接、订单查询、客服分流和频道体验。</li>
-            </ul>
+          <article class="direction-card trade">
+            <div class="direction-head">
+              <div>
+                <h3>交易闭环</h3>
+                <p>贵客荟交易页面嵌入黄小西，承接商品浏览、下单、支付、订单详情、售后、退款和核销。</p>
+              </div>
+              <span class="direction-badge">交易页面</span>
+            </div>
+            <div class="decision-questions" aria-label="交易闭环需要领导决策的问题">
+              <article class="business-question"><strong>交易主体是否完全保留在贵客荟？</strong><p>需确认商品、价格、库存、支付、订单、退款、核销和发票责任归属。</p></article>
+              <article class="business-question"><strong>黄小西入口订单如何归因？</strong><p>需确认来自黄小西的浏览、下单、支付订单如何标记和统计。</p></article>
+              <article class="business-question"><strong>用户购买时看到哪个品牌主体？</strong><p>需确认交易页面的品牌露出、主体提示和用户感知口径。</p></article>
+              <article class="business-question"><strong>交易争议由谁最终处理？</strong><p>需确认支付失败、重复扣款、库存不足、无法核销、退款争议等问题的处理主体。</p></article>
+            </div>
+            <div class="question-drawers">
+              <details class="detail-drawer">
+                <summary>产品落地问题</summary>
+                <ul>
+                  <li>黄小西哪些入口跳转贵客荟H5，包括搜索结果、详情页、行程卡、AI任务、我的订单和个人中心。</li>
+                  <li>H5嵌入后是否保持黄小西顶部栏、底部栏和返回逻辑，用户如何感知仍在同一使用链路中。</li>
+                  <li>从黄小西带入贵客荟的上下文有哪些，包括景区、日期、人数、游客画像、来源渠道和进入理由。</li>
+                  <li>商品详情、购物车、收银台、支付成功页、订单详情和售后页分别由哪个页面承接。</li>
+                  <li>支付成功后用户回到哪里，是贵客荟订单页、黄小西行程页，还是展示完成态行程卡。</li>
+                  <li>活动券、会员价、组合套餐、渠道归因如何在黄小西入口场景中露出。</li>
+                  <li>H5加载失败、登录失败、支付中断、重复支付、库存不足和售后争议的异常处理流程是什么。</li>
+                  <li>交易相关的订单处理入口如何设计，让用户能回到贵客荟完成订单和履约处理。</li>
+                </ul>
+              </details>
+              <details class="detail-drawer">
+                <summary>技术对接问题</summary>
+                <ul>
+                  <li>H5嵌入采用webview、iframe还是小程序web-view，各端能力、限制和兼容性分别是什么。</li>
+                  <li>单点登录如何实现，token传递、刷新、失效、跨域Cookie和免登安全边界如何处理。</li>
+                  <li>黄小西和贵客荟之间的JSBridge能力清单是什么，包括登录、分享、支付完成、返回处理和订单入口。</li>
+                  <li>H5路由参数如何防篡改，商品ID、渠道来源、用户标识和订单返回地址是否需要签名。</li>
+                  <li>支付、订单、库存、退款等强交易能力是否完全留在贵客荟，黄小西只消费订单事件和状态。</li>
+                  <li>嵌入页面的性能基线是什么，首屏加载、白屏率、JS错误率、支付转化漏斗如何监控。</li>
+                  <li>多端适配和版本灰度如何做，黄小西App、小程序、H5容器能力不一致时如何降级。</li>
+                  <li>埋点归因如何统一，黄小西曝光、点击、贵客荟下单、支付、退款能否串成同一traceId。</li>
+                </ul>
+              </details>
+            </div>
           </article>
-          <article class="role-card">
-            <span class="badge">贵客荟</span>
-            <h3>牵头交易、会员和履约</h3>
-            <ul>
-              <li>提供商品池、会员规则、库存价格、订单支付、退款核销和售后能力。</li>
-              <li>负责试点商品运营、资源维护、客服承接和履约协调。</li>
-            </ul>
-          </article>
-          <article class="role-card">
-            <span class="badge">集团与子公司</span>
-            <h3>牵头资源和协同</h3>
-            <ul>
-              <li>拍板统一入口、数据权限、跨公司责任和问题升级机制。</li>
-              <li>各子公司安排专职对接人，负责资源上架、活动执行、订单履约和素材维护。</li>
-            </ul>
-          </article>
-        </div>
 
-        <div class="asset-zone">
-          <div class="placeholder-grid">
-            <div class="placeholder"><div><b>试点资源素材</b><span>景区、酒店、线路、餐饮、出行和商品图片及卖点。</span></div><a href="#待补充-试点资源链接">待补充链接</a></div>
-            <div class="placeholder"><div><b>交易与会员资料</b><span>商品池、会员权益、券包、订单、支付、退款和核销规则。</span></div><a href="#待补充-交易资料链接">待补充链接</a></div>
-            <div class="placeholder"><div><b>接口与数据看板</b><span>账号映射、接口文档、埋点方案和经营看板。</span></div><a href="#待补充-项目资料链接">待补充链接</a></div>
-            <div class="placeholder"><div><b>运营频道资料</b><span>频道负责人、更新频率、内容模板和频道准入规则。</span></div><a href="#待补充-频道资料链接">待补充链接</a></div>
-          </div>
-          <div class="decision-band">
-            <h2>汇报结论：先做闭环，再做扩量。</h2>
-            <p>一期先打通入口、用户、交易和数据，围绕酒店与景区形成可体验、可转化、可复盘的样板。样板跑通后，再把能力扩展到更多子公司、更多频道和更多文旅业态。</p>
-          </div>
+          <article class="direction-card member">
+            <div class="direction-head">
+              <div>
+                <h3>会员积分归属确认</h3>
+                <p>黄小西不新建会员体系，不管理积分、券包和会员规则；相关内容仍由贵客荟维护。</p>
+              </div>
+              <span class="direction-badge">归属确认</span>
+            </div>
+            <div class="decision-questions" aria-label="会员积分能力开放需要领导决策的问题">
+              <article class="business-question"><strong>会员体系是否仍由贵客荟管理？</strong><p>需确认会员账户、积分账本、等级规则和券包资产的归属。</p></article>
+              <article class="business-question"><strong>行程卡是否展示会员相关结果？</strong><p>需确认订单中涉及会员价、券抵扣、积分抵扣时，黄小西是否展示结果。</p></article>
+              <article class="business-question"><strong>黄小西行为是否计入积分？</strong><p>需确认AI互动、行程查看、行程卡打开等行为是否纳入贵客荟积分规则。</p></article>
+              <article class="business-question"><strong>会员积分问题由谁处理？</strong><p>需确认积分、券包、会员价不可用等问题的处理主体。</p></article>
+            </div>
+            <div class="question-drawers">
+              <details class="detail-drawer">
+                <summary>产品落地问题</summary>
+                <ul>
+                  <li>积分来源有哪些，购票、购物、评价、签到、分享、完成行程、核销记录是否都计入。</li>
+                  <li>积分消耗场景有哪些，包括抵扣现金、兑换券包、换购文创、领取讲解、停车和快速通道相关能力。</li>
+                  <li>积分到账规则如何设置，支付后即到账、核销后到账、过售后期到账分别对应什么风险。</li>
+                  <li>退款、改期、取消订单、部分核销时，积分如何退回、冻结、扣减或产生负积分。</li>
+                  <li>用户在黄小西看到的会员资产包括哪些，等级、积分、券包、成长值和即将过期信息如何组织。</li>
+                  <li>贵客荟会员相关内容在黄小西场景中如何触发，例如行程卡中展示可用券或订单抵扣结果。</li>
+                  <li>积分规则变更、活动积分、跨平台积分清算和用户投诉口径如何在页面中保持一致。</li>
+                </ul>
+              </details>
+              <details class="detail-drawer">
+                <summary>技术对接问题</summary>
+                <ul>
+                  <li>会员主账号确定后，黄小西用户ID、贵客荟会员ID和第三方登录ID如何建立关联关系。</li>
+                  <li>积分账户是集中式账户还是双系统账本，余额查询、冻结、扣减和流水审计如何提供。</li>
+                  <li>积分事件模型如何定义，包括事件类型、来源系统、订单号、用户ID、积分值、状态和过期时间。</li>
+                  <li>积分发放和扣减如何保证事务一致性，支付成功但积分失败、积分成功但订单回滚如何补偿。</li>
+                  <li>积分余额高并发查询和兑换如何防止超发、重复扣减、并发下单和异常刷分。</li>
+                  <li>历史会员和积分数据如何迁移或映射，手机号变更、注销、合并账号和黑名单如何处理。</li>
+                  <li>会员等级、积分规则和活动规则确定后，后台配置、规则引擎和灰度生效能力如何支持。</li>
+                  <li>对账与审计报表如何建设，包括积分发放、消耗、过期、退款扣回、异常流水和人工调整。</li>
+                </ul>
+              </details>
+            </div>
+          </article>
         </div>
       </section>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="page-shell">黄小西 × 贵客荟一期融合落地页｜版本：2026-06-16｜可直接打印或转存 PDF</div>
+    <div class="page-shell">黄小西 × 贵客荟一期相互嵌入落地建议｜版本：2026-06-16｜可直接打印或转存 PDF</div>
   </footer>
 </body>
 </html>
